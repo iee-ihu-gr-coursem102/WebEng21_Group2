@@ -11,14 +11,8 @@ if (!isset($_SERVER['PATH_INFO'])) {
 	exit;
 }
 
-print "1.JSON";
-print_r($json);
-
 $request = explode('/', trim($_SERVER['PATH_INFO'], '/'));
-
 $request = array("dbversion" => $request[0], "resource" => $request[1]);
-//print "\n dbversion " . $request["dbversion"];
-//print "\n resource " . $request["resource"];
 
 if ($request["dbversion"]) {
     if ($request["resource"] == "Movies") {
@@ -26,7 +20,6 @@ if ($request["dbversion"]) {
     }
     else if ($request["resource"] == "Comments") {
         require_once "./Resources/" . $request['resource'] . ".php";
-
     }
     else if (($request["resource"] == "Genres")) {
         require_once "./Resources/" . $request['resource'] . ".php";
