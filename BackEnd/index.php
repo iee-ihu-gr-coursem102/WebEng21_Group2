@@ -15,6 +15,7 @@ $request = explode('/', trim($_SERVER['PATH_INFO'], '/'));
 $request = array("dbversion" => $request[0], "resource" => $request[1]);
 
 if ($request["dbversion"]) {
+	header('Access-Control-Allow-Origin: *');
     if ($request["resource"] == "Movies") {
         require_once "./Resources/" . $request['resource'] . ".php";
     }
