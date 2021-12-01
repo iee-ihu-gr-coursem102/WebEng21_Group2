@@ -19,7 +19,7 @@ if ($request["dbversion"]) {
     if ($request["resource"] == "Movies") {
         require_once "./Resources/" . $request['resource'] . ".php";
     }
-    else if ($request["resource"] == "Comments") {
+    else if ($request["resource"] == "Users") {
         require_once "./Resources/" . $request['resource'] . ".php";
     }
     else if (($request["resource"] == "Genres")) {
