@@ -28,6 +28,9 @@ if ($request["dbversion"]) {
 	else if (($request["resource"] == "Comments")) {
         require_once "./Resources/" . $request['resource'] . ".php";
     }
+	else if (($request["resource"] == "Ratings")) {
+        require_once "./Resources/" . $request['resource'] . ".php";
+    }
     else {
         header('HTTP/1.1 404  Not Found');
     }
