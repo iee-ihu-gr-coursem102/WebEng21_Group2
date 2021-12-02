@@ -22,7 +22,10 @@ if ($request["dbversion"]) {
     else if ($request["resource"] == "Users") {
         require_once "./Resources/" . $request['resource'] . ".php";
     }
-    else if (($request["resource"] == "Genres")) {
+    else if (($request["resource"] == "Sessions")) {
+        require_once "./Resources/" . $request['resource'] . ".php";
+    }
+	else if (($request["resource"] == "Comments")) {
         require_once "./Resources/" . $request['resource'] . ".php";
     }
     else {
