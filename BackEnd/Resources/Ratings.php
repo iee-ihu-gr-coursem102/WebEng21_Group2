@@ -1,0 +1,4 @@
+<?php
+
+print "Comments Resource";
+?>
