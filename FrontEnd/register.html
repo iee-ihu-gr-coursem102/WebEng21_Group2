@@ -7,35 +7,30 @@
 
          <!-- Bootstrap CSS -->
          <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-         <link rel="stylesheet" href="css/carousel.css">
+         <link href="css/style.css" rel="stylesheet">
          <title>ΠΑΠΑΚΙ</title>
          <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
          <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/carousel/">
-         <link href="css/style.css" rel="stylesheet">
-    
-
-          
-
-          
+        
+      
+         
 
     
-    <!-- Custom styles for carousel -->
-    <link href="carousel.css" rel="stylesheet">
+        
 
      </head>
 
      <body>
          <!-- Navigation-->
-        <header>
+         <header>
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
               <div class="container px-4 px-lg-5">
                   <a class="navbar-brand" href="front_page.html"><img src="img/ducky.png" alt="" width="60" height="48"></a>
-                 <div class="me-5">
-                  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                    <i class="fas fa-search" id="search_icon"></i>
-                  </button>
-                 </div>
-                    
+                  <div class="me-5">
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                      <i class="fas fa-search" id="search_icon"></i>
+                    </button>
+                  </div> 
                   <div class="collapse navbar-collapse" id="navbarResponsive">
                       <!-- Searchbar-->
                       <div class="d-flex input-group w-75">
@@ -52,94 +47,72 @@
                         
                       </div>
                     </div>
-                    
-                      <div class="dropstart position-relative">
-                        <div class="position-absolute top-0 start-50 translate-middle">
-                          <div class="me-5">
-                          <button type="button" class="btn btn-outline-danger" data-bs-toggle="dropdown" aria-expanded="true">Sign&nbsp;In</button>
-                         <div class="dropdown-menu">
-                          <form class="px-4 py-3">
-                            <div class="mb-3">
-                              <label for="exampleDropdownFormEmail1" class="form-label">Email address</label>
-                              <input type="email" class="form-control" id="exampleDropdownFormEmail1" placeholder="email@example.com">
-                            </div>
-                            <div class="mb-3">
-                              <label for="exampleDropdownFormPassword1" class="form-label">Password</label>
-                              <input type="password" class="form-control" id="exampleDropdownFormPassword1" placeholder="Password">
-                            </div>
-                            <div class="mb-3">
-                               <div class="form-check">
-                               <input type="checkbox" class="form-check-input" id="dropdownCheck">
-                               <label class="form-check-label" for="dropdownCheck">
-                               Remember me
-                              </label>
-                             </div>
-                             <button type="submit" class="btn btn-danger">Login</button>
-                          </form>
-                           <div class="dropdown-divider"></div>
-                           <a class="dropdown-item" href="register.html">New around here? Sign up</a>
-                           <a class="dropdown-item" href="#">Forgot password?</a>
-                         </div>
-                        </div>
-                      </div>
-                    </div>
-                      
                 </div>
              </nav>
             </header>
+                        
+                        
+                     
+                    
         
 
-        <!--Carousel--> 
+        <!--Register Form--> 
         <main>
-          <h2>
-            <br>
-            <p class="position-absolute m-3">
-              MOST WATCHED
-            </p>
-          </h2>
-
-          <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
-            <div class="carousel-indicators">
-              <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-              <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
-              <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
-            </div>
-            <div class="carousel-inner">
-              <div class="carousel-item active">
-                <div class="position-absolute top-50 start-50 translate-middle">
-                  <svg width="400" height="400" xmlns="http://www.w3.org/2000/svg">
-                    
-                    <image href="img/joker.jpg" height="400" width="400"/>
-                  </svg>
+          <br><br>
+          <div class="mask d-flex align-items-center h-50 gradient-custom-3 mt-5">
+            <div class="container h-100">
+              <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+                  <div class="card" style="border-radius: 15px;">
+                    <div class="card-body p-5">
+                      <h2 class="text-uppercase text-center mb-5">Create an account</h2>
+        
+                      <form>
+        
+                        <div class="form-outline mb-4">
+                          <input type="text" id="form3Example1cg" class="form-control form-control-lg" />
+                          <label class="form-label" for="form3Example1cg">Your Name</label>
+                        </div>
+        
+                        <div class="form-outline mb-4">
+                          <input type="email" id="form3Example3cg" class="form-control form-control-lg" />
+                          <label class="form-label" for="form3Example3cg">Your Email</label>
+                        </div>
+        
+                        <div class="form-outline mb-4">
+                          <input type="password" id="form3Example4cg" class="form-control form-control-lg" />
+                          <label class="form-label" for="form3Example4cg">Password</label>
+                        </div>
+        
+                        <div class="form-outline mb-4">
+                          <input type="password" id="form3Example4cdg" class="form-control form-control-lg" />
+                          <label class="form-label" for="form3Example4cdg">Repeat your password</label>
+                        </div>
+        
+                        <div class="form-check d-flex justify-content-center mb-5">
+                          <input
+                            class="form-check-input me-2"
+                            type="checkbox"
+                            value=""
+                            id="form2Example3cg"
+                          />
+                          <label class="form-check-label" for="form2Example3g">
+                            I agree all statements in <a href="#!" class="text-body"><u>Terms of service</u></a>
+                          </label>
+                        </div>
+        
+                        <div class="d-flex justify-content-center">
+                          <button type="button" class="btn btn-danger btn-block btn-lg">Register</button>
+                        </div>                                             
+                      </form>
+        
+                    </div>
+                  </div>
                 </div>
-
-                
               </div>
-              <div class="carousel-item">
-                <div class="position-absolute top-50 start-50 translate-middle">
-                  <svg width="400" height="400" xmlns="http://www.w3.org/2000/svg">
-                    
-                    <image href="img/shrek.png" height="400" width="400"/>
-                  </svg>
-                </div>
-              </div>
-              <div class="carousel-item">
-                <div class="position-absolute top-50 start-50 translate-middle">
-                  <svg width="400" height="400" xmlns="http://www.w3.org/2000/svg">
-                    
-                    <image href="img/teen_wolf.png" height="400" width="400"/>
-                  </svg>
-                </div>
             </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
-              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
-              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-              <span class="visually-hidden">Next</span>
-            </button>
-          </div>
+          </div><br>
+              
         </main>
          <!--Carousel--> 
         
@@ -266,8 +239,13 @@
             <!-- Copyright -->
           </footer>
           <!-- Footer -->
-        <script src="js/search.js"></script>
-        <!-- Bootstrap JavaScript-->
+        
+          
+          <script src="js/search.js"></script>
+        
+          <!-- Bootstrap JavaScript-->
+        
+        
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
      </body>
  </html>
