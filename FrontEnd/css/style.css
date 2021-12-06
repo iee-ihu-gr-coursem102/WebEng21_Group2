@@ -7,6 +7,12 @@ main>h2>p{
   color: white;
 }
 
+#search_result{
+  color: white;
+  margin-left: 30px;
+  margin-top: 3em;
+}
+
 
 .form-control:focus {
 	border-color: #ff000000;
