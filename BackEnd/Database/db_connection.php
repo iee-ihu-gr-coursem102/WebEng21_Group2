@@ -7,12 +7,7 @@ if ($_SERVER['REMOTE_ADDR']=='127.0.0.1')
     if (mysqli_connect_errno())
     {
         echo "Failed to connect to MySQL. ";
-        exit();
-    }
-    else
-    {
-        echo "Success to connect to MySQL. ";
-        exit();
+		header('HTTP/1.1 503 Service Unavailable');
     }
 }
 else
@@ -22,12 +17,7 @@ else
     if (mysqli_connect_errno())
     {
         echo "Failed to connect to MySQL. ";
-        exit();
-    }
-    else
-    {
-        echo "Success to connect to MySQL. ";
-        exit();
+        header('HTTP/1.1 503 Service Unavailable');
     }
 }
 
