@@ -4,8 +4,7 @@ if ($httpMethod == "POST") {
 	if (isset($json["username"]) && isset($json["password"])) {
 		//Pending check in DB
 		
-		$_SESSION['username'] = $json["username"];
-		header('HTTP/1.1 201 Created');
+		header('HTTP/1.1 501 Not Implemented');
 	} else {
 		header('HTTP/1.1 400 Bad Request');
 	}

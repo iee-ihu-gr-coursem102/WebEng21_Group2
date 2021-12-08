@@ -5,6 +5,8 @@ $httpMethod = $_SERVER['REQUEST_METHOD'];
 $request_body = file_get_contents('php://input'); //php raw stream from http request body
 $json = json_decode($request_body, true);
 
+require_once "./Database/db_connection.php";
+
 if (!isset($_SERVER['PATH_INFO'])) {
 	header('HTTP/1.1 500 Internal Server Error');
 	print "Request to api is too short";
