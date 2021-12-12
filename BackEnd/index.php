@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 $httpMethod = $_SERVER['REQUEST_METHOD'];
 
 $request_body = file_get_contents('php://input'); //php raw stream from http request body
@@ -30,7 +30,7 @@ if ($request["dbversion"]) {
 	else if (($request["resource"] == "Comments")) {
         require_once "./Resources/" . $request['resource'] . ".php";
     }
-	else if (($request["resource"] == "Ratings")) {
+	else if (($request["resource"] == "Genres")) {
         require_once "./Resources/" . $request['resource'] . ".php";
     }
     else {
