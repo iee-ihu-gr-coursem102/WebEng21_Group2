@@ -1,6 +1,6 @@
 <?php
 
-$result = mysqli_query($mysqli, "SELECT TITLE, POSTER_IMAGE, OVERVIEW, VOTE_AVERAGE, POPULARITY FROM  movies LIMIT 5");
+$result = mysqli_query($mysqli, "SELECT TITLE, POSTER_IMAGE, OVERVIEW, VOTE_AVERAGE, POPULARITY FROM  movies");
 	if($result) {
 		$return_data = [];
 		while ($row = $result->fetch_assoc()) {
