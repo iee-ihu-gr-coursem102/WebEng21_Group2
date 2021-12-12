@@ -13,10 +13,7 @@ if ($httpMethod == "POST") {
 		if (!$stmt->execute()) {
 			print "Execute failed:(" . $stmt->errno . ")" . $stmt->error;
 		}
-		
-		$matchedUsers = $stmt->get_result()->num_rows;
-		print $matchedUsers;
-	
+
 		$_SESSION["username"] = $json["username"];
 		header('HTTP/1.1 201 Created');
 	} else {
@@ -24,9 +21,12 @@ if ($httpMethod == "POST") {
 	}
 } else if ($httpMethod == "DELETE"){
 	session_destroy();
+	header('HTTP/1.1 204 No Content');
 }else if ($httpMethod == "GET"){
 	if (isset($_SESSION["username"])) {
 		echo $_SESSION["username"];
+		header('HTTP/1.1 200 OK');
+		
 	}
 }
 else {
