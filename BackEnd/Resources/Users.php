@@ -2,10 +2,11 @@
 
 if ( $httpMethod == "POST") {
 	if (isset($json["username"]) && isset($json["password"]) && isset($json["email"])) {
-	
-		$sql = "INSERT INTO USERS(USERNAME, PASSWORD , EMAIL) VALUES(?, ?, ?)";
+	        
+		$sql = "INSERT INTO users(USERNAME, PASSWORD , EMAIL) VALUES(?, ?, ?)";
 		$stmt = $mysqli->prepare($sql);
 		$stmt->bind_param("sss", $json["username"], $json["password"], $json["email"]);
+
 		if($stmt->execute()) {
 			$stmt->close();
 			header('HTTP/1.1 201 Created');
