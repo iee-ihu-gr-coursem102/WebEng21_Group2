@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 $httpMethod = $_SERVER['REQUEST_METHOD'];
 
 $request_body = file_get_contents('php://input'); //php raw stream from http request body
