@@ -13,9 +13,15 @@ if ($httpMethod == "POST") {
 		if (!$stmt->execute()) {
 			print "Execute failed:(" . $stmt->errno . ")" . $stmt->error;
 		}
-
-		$_SESSION["username"] = $json["username"];
-		header('HTTP/1.1 201 Created');
+        if ($stmt->get_result()->num_rows == 0) {
+			header('HTTP/1.1 401 Unauthorized');
+		}
+		else {
+			$_SESSION["username"] = $json["username"];
+			header('HTTP/1.1 201 Created');
+		}
+		
+		
 	} else {
 		header('HTTP/1.1 400 Bad Request');
 	}
