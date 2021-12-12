@@ -1,6 +1,12 @@
 <?php
 
-$result = mysqli_query($mysqli, "SELECT TITLE, POSTER_IMAGE, OVERVIEW, VOTE_AVERAGE, POPULARITY FROM  movies");
+$sql = "SELECT TITLE, POSTER_IMAGE, OVERVIEW, VOTE_AVERAGE, POPULARITY FROM  movies";
+
+if (isset($_GET["category"])) {
+	$sql .= " WHERE GENRES LIKE '" . htmlspecialchars($_GET["category"]) . "'";
+}
+
+$result = mysqli_query($mysqli, $sql);
 	if($result) {
 		$return_data = [];
 		while ($row = $result->fetch_assoc()) {
