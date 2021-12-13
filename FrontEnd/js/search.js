@@ -13,10 +13,14 @@ SearchButton.onclick = function ()
 
       
     
-    if (key && value1){
-      localStorage.setItem(key, value1);
-      
-    };
+      if(key===''){
+        const key1 = ' ';
+        const value2 = ' ';
+        localStorage.setItem(key1, value2);
+      }
+      else if(key && value1){
+        localStorage.setItem(key, value1);
+        };
 
     
     window.location = 'search_page.html';
