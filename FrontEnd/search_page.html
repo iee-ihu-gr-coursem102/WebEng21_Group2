@@ -12,6 +12,7 @@
          <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
          <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/carousel/">
          <script src="js/nav.js"></script> 
+         <script src="js/combo_box.js"></script>
          
 
     
@@ -35,12 +36,11 @@
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <!-- Searchbar-->
                     <div class="d-flex input-group w-75">
-                      <button class="btn btn-danger dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">All</button>
-                      <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Action</a></li>
-                        <li><a class="dropdown-item" href="#">Comedy</a></li>
-                        <li><a class="dropdown-item" href="#">Drama</a></li>
-                      </ul>
+                      <button class="btn btn-danger dropdown-toggle" id = "combo_box" type="button" data-bs-toggle="dropdown" aria-expanded="false">All</button>
+                        <ul class="dropdown-menu" id ="drop">
+                          <li><a class="dropdown-item" id = "item_0" onclick="changeBox(30)">All</a></li>
+                          <li><hr class="dropdown-divider"></li>
+                        </ul>
                       <input type="text" id="myInput" class="form-control" placeholder="Search..." aria-label="Text input with dropdown button">
                       <div class="invisible">
                         <button type="button" id="SearchButton"></button>
