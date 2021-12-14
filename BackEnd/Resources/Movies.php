@@ -15,6 +15,7 @@ echo json_encode($data, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT);
 if ($httpMethod == "GET") 
 {
     /*Search Movies by multiple inputs such as Title, Genres*/
+    /*If there are no user inputs the current query returns all movies*/
     $search_input = ""; /*user input for search*/
     $genres_input = ""; /*user selection for genre*/
     $sql_query = "SELECT * FROM movies ";
