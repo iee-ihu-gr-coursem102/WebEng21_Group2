@@ -7,23 +7,24 @@ const SearchButton = document.querySelector('#SearchButton')
 
 SearchButton.onclick = function () 
   {
-      
-      const key = input1.value;
+      const combo_box = document.getElementById('combo_box').textContent; 
+      const key = 'serach_input';
       const value1 = input1.value;
 
       
     
-      if(key===''){
+      if(value1===''){
         const key1 = ' ';
         const value2 = ' ';
-        localStorage.setItem(key1, value2);
+        sessionStorage.setItem(key, value2);
       }
       else if(key && value1){
-        localStorage.setItem(key, value1);
+        sessionStorage.setItem(key, value1);
         };
 
     
-    window.location = 'search_page.html';
+        sessionStorage.setItem('combo_box', combo_box);
+        window.location = 'search_page.html#'+combo_box+'#'+value1;
 
   }
 
