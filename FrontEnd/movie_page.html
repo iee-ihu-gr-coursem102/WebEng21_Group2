@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+ <html>
+     <head>
+         <!-- Required meta tags -->
+         <meta charset="utf-8">
+         <meta name="viewport" content="width=device-width, initial-scale=1">
+
+         <!-- Bootstrap CSS -->
+         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+         <link href="css/style.css" rel="stylesheet">
+         <title>ΠΑΠΑΚΙ</title>
+         <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+        
+         <link href="css/comments.css" rel="stylesheet">
+         <link href="css/comment_section.css" rel="stylesheet">
+         
+         
+
+    
+          <!-- Custom styles for carousel -->
+          <link href="carousel.css" rel="stylesheet">
+        
+          <script src="js/nav.js"></script>
+          <script src="js/combo_box.js"></script>
+          
+
+     </head>
+
+     <body id="top-page">
+         <!-- Navigation-->
+         <header>
+          <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+            <div class="container px-4 px-lg-5">
+                <a class="navbar-brand" href="front_page.html"><img src="img/ducky.png" alt="" width="60" height="48"></a>
+               <div class="me-auto">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation" onclick="changeClass()">
+                  <i class="fas fa-search" id="search_icon"></i>
+                </button>
+               </div>
+                  
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <!-- Searchbar-->
+                    <div class="d-flex input-group w-75">
+                      <button class="btn btn-danger dropdown-toggle" id = "combo_box" type="button" data-bs-toggle="dropdown" aria-expanded="false">All</button>
+                      <ul class="dropdown-menu" id ="drop">
+                        <li><a class="dropdown-item" id = "item_0" onclick="changeBox(30)">All</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                      </ul>
+                      <input type="text" id="myInput" class="form-control" placeholder="Search..." aria-label="Text input with dropdown button">
+                      <div class="invisible">
+                        <button type="button" id="SearchButton"></button>
+                      </div>
+                      
+                    </div>
+                  </div>
+                  
+                    <div class="dropstart position-relative">
+                      <div class="position-absolute top-0 start-50 translate-middle">
+                        <div class="me-5">
+                        <button type="button" class="btn btn-outline-danger" data-bs-toggle="dropdown" aria-expanded="true">Sign&nbsp;In</button>
+                       <div class="dropdown-menu">
+                        <form class="px-4 py-3">
+                          <div class="mb-3">
+                            <label for="exampleDropdownFormEmail1" class="form-label">Email address</label>
+                            <input type="email" class="form-control" id="exampleDropdownFormEmail1" placeholder="email@example.com">
+                          </div>
+                          <div class="mb-3">
+                            <label for="exampleDropdownFormPassword1" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="exampleDropdownFormPassword1" placeholder="Password">
+                          </div>
+                          <div class="mb-3">
+                             <div class="form-check">
+                             <input type="checkbox" class="form-check-input" id="dropdownCheck">
+                             <label class="form-check-label" for="dropdownCheck">
+                             Remember me
+                            </label>
+                           </div>
+                           <button type="submit" class="btn btn-danger">Login</button>
+                        </form>
+                         <div class="dropdown-divider"></div>
+                         <a class="dropdown-item" href="register.html">New around here? Sign up</a>
+                         <a class="dropdown-item" href="#">Forgot password?</a>
+                       </div>
+                      </div>
+                    </div>
+                  </div>
+                    
+              </div>
+           </nav>
+          </header>
+                      
+                        
+                        
+                     
+                    
+        
+         <br><br><br><br>
+        
+        <main>
+          <!-- Page Content -->
+          <div class="container" id = "main_movies">
+
+            <!-- Title -->
+            <h1 class="my-4" id="title"></h1>
+
+            <!-- Title Item Row -->
+            <div class="row">
+
+              <div class="col-md-6">
+                <img class="img-fluid" id="images" src="" alt="">
+              </div>
+
+              <div class="col-md-4">
+                <h3 class="my-3">Description:</h3>
+                <p id="overview"></p>
+                
+                <div class="row row-cols-auto rounded" id = "ratings1">
+                  <div class="col" style="margin-top: 0.3em;"><p>Duck rating: </p></div>
+                  <div class="col" style="margin-top: 0.3em;"><p>☆</p></div>
+                  <div class="col" style="margin-top: 0.3em;"><p id="score"></p></div>
+                </div>
+              </div>
+
+            </div>
+            <!-- /.row -->
+
+           
+
+          </div>
+          <!-- /.container -->
+          <div class="container" style="margin-top: 3em;">
+            <div class="be-comment-block">
+              <h1 class="comments-title">Reviews (2)</h1>
+              <div class="be-comment">
+                <div class="be-img-comment">	
+                  <a href="blog-detail-2.html">
+                    <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="" class="be-ava-comment">
+                  </a>
+                </div>
+                <div class="be-comment-content">
+                  
+                    <span class="be-comment-name">
+                      Stelios
+                      </span>
+                    <span class="be-comment-time">
+                      May 27, 2015 at 3:14am
+                    </span>
+            
+                  <p class="be-comment-text">
+                    Best Movie Ever!
+                  </p>
+                </div>
+              </div>
+              <div class="be-comment">
+                <div class="be-img-comment">	
+                  <a href="blog-detail-2.html">
+                    <img src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="" class="be-ava-comment">
+                  </a>
+                </div>
+                <div class="be-comment-content">
+                  <span class="be-comment-name">
+                    Nikos
+                  </span>
+                  <span class="be-comment-time">
+                    May 27, 2015 at 3:14am
+                  </span>
+                  <p class="be-comment-text">
+                    Overrated!
+                  </p>
+                </div>
+              </div>
+              
+              </div>
+            </div>
+          <div class="card">
+            <div class="row">
+                <div class="col-2"> <img src="img/ducky.png" width="70" class="rounded-circle mt-2"> </div>
+                <div class="col-10">
+                    <div class="comment-box ml-2">
+                        <h4>Add a comment</h4>
+                        <div class="row row-cols-auto rounded" id = "ratings">
+                          <div class="col" style="margin-top: 0.3em;"><p>Leave a rating: </p></div>
+                          <div class="col" style="margin-top: 0.3em;"><p>☆</p></div>
+                          <div class="col" style="margin-top: 0.4em;"><input id = "userRating" class="form-control" style="text-align:center;" type="text" maxlength="2" size="1"></div>
+                          <div class="col" style="margin-top: 0.3em;"><p>/10</p></div>
+                        </div>
+                        <br>
+                        <div class="comment-area"> <textarea class="form-control" placeholder="what is your view?" rows="4"></textarea> </div>
+                        <div class="comment-btns mt-2">
+                            <div class="row">
+                                <div class="col-10 col-md-10 col-lg-10 col-sm-9">
+                                    <div class="pull-left"> <button class="btn btn-secondary">Cancel</button> </div>
+                                </div>
+                                <div class="col-2 col-md-2 col-lg-2 col-sm-3">
+                                    <div class="pull-right"> <button id="sendButton" class="btn btn-danger send">Send <i class="fa fa-long-arrow-right ml-1"></i></button> </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+         
+        </main>
+        <br><br><br><br> 
+        
+        
+          <!-- Footer -->
+          <footer
+                  class="text-center text-lg-start text-white"
+                  style="background-color: #e72806"
+                  >
+            <!-- Grid container -->
+            <div class="container p-4 pb-0">
+              <!-- Section: Links -->
+              <section class="">
+                <!--Grid row-->
+                <div class="row">
+                  <!-- Grid column -->
+                  <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
+                    <h6 class="text-uppercase mb-4 font-weight-bold">
+                      Papaki
+                    </h6>
+                    <p>
+                      Experimental webpage for academic purposes. Developed for web application course on behalf of International Hellenic Univercity.
+                    </p>
+                  </div>
+                  <!-- Grid column -->
+
+                  <hr class="w-100 clearfix d-md-none" />
+
+                  <!-- Grid column -->
+                  <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
+                    <h6 class="text-uppercase mb-4 font-weight-bold">Terms and Services</h6>
+                    <p>
+                      <a class="text-white">Lisences</a>
+                    </p>
+                  </div>
+                  <!-- Grid column -->
+
+                  <hr class="w-100 clearfix d-md-none" />
+
+                  <!-- Grid column -->
+                  <hr class="w-100 clearfix d-md-none" />
+
+                  <!-- Grid column -->
+                  <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
+                    <h6 class="text-uppercase mb-4 font-weight-bold">Contact</h6>
+                    <p><i class="fas fa-home mr-3"></i> Tessaloniki, Greece</p>
+                    <p><i class="fas fa-envelope mr-3"></i> info@gmail.com</p>
+                  </div>
+                  <!-- Grid column -->
+
+                  <!-- Grid column -->
+                  <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
+                    <h6 class="text-uppercase mb-4 font-weight-bold">Follow us</h6>
+
+                    <!-- Facebook -->
+                    <a
+                      class="btn btn-dark btn-floating m-1"
+                      style="background-color: #e72806"
+                      href="#!"
+                      role="button"
+                      ><i class="fab fa-facebook-f"></i
+                      ></a>
+
+                    <!-- Twitter -->
+                    <a
+                      class="btn btn-dark btn-floating m-1"
+                      style="background-color: #e72806"
+                      href="#!"
+                      role="button"
+                      ><i class="fab fa-twitter"></i
+                      ></a>
+
+                    <!-- Google -->
+                    <a
+                      class="btn btn-dark btn-floating m-1"
+                      style="background-color: #e72806"
+                      href="#!"
+                      role="button"
+                      ><i class="fab fa-google"></i
+                      ></a>
+
+                    <!-- Instagram -->
+                    <a
+                      class="btn btn-dark btn-floating m-1"
+                      style="background-color: #e72806"
+                      href="#!"
+                      role="button"
+                      ><i class="fab fa-instagram"></i
+                      ></a>
+
+                    <!-- Linkedin -->
+                    <a
+                      class="btn btn-dark btn-floating m-1"
+                      style="background-color: #e72806"
+                      href="#!"
+                      role="button"
+                      ><i class="fab fa-linkedin-in"></i
+                      ></a>
+                    <!-- Github -->
+                    <a
+                      class="btn btn-dark btn-floating m-1"
+                      style="background-color: #e72806"
+                      href="#!"
+                      role="button"
+                      ><i class="fab fa-github"></i
+                      ></a>
+                  </div>
+                </div>
+                <!--Grid row-->
+              </section>
+              <!-- Section: Links -->
+            </div>
+            <!-- Grid container -->
+
+            <!-- Copyright -->
+            <div
+                class="text-center p-3"
+                style="background-color: rgba(0, 0, 0, 0.2)"
+                >
+              © 2021 Copyright:
+              <a class="text-white" href="https://mdbootstrap.com/"
+                >papaki.com</a
+                >
+            </div>
+            <!-- Copyright -->
+          </footer>
+          <!-- Footer -->
+        
+          <script src="js/movie_page.js"></script>
+            
+          <script src="js/search.js"></script>
+        
+          <!-- Bootstrap JavaScript-->
+        
+         
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+        
+      </body>
+ </html>
