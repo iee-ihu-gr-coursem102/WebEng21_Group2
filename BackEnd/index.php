@@ -1,5 +1,12 @@
 <?php
 session_start();
+/*
+if (!isset(getallheaders() ['x-api-key']) || getallheaders() ['x-api-key'] != "1234") {
+    header('HTTP/1.1 403 Forbidden');
+    exit;
+}
+*/
+
 $httpMethod = $_SERVER['REQUEST_METHOD'];
 
 $request_body = file_get_contents('php://input'); //php raw stream from http request body
