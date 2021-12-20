@@ -2,7 +2,8 @@
 
 if ( $httpMethod == "POST") {
 	if (isset($json["username"]) && isset($json["password"]) && isset($json["email"])) {
-	        
+		
+		$json["password"] = substr( hash('sha256', $json["password"]), 0, 15);
 		$sql = "INSERT INTO users(USERNAME, PASSWORD , EMAIL) VALUES(?, ?, ?)";
 		$stmt = $mysqli->prepare($sql);
 		$stmt->bind_param("sss", $json["username"], $json["password"], $json["email"]);
