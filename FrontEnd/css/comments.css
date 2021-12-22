@@ -1,0 +1,109 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200&display=swap');
+
+
+@media only screen and (min-width: 768px) {
+    .card {
+        width: 700px;
+    }
+    #ratings{
+        margin-left: 5em;
+    }
+    
+}
+  @media only screen and (min-width: 992px) {
+    .card {
+        width: 950px;
+    }
+    #ratings{
+        margin-left: 10em;
+    }
+   
+  }
+  @media only screen and (min-width: 1200px) {
+    .card {
+        width: 1120px;
+    }
+    #ratings{
+        margin-left: 10em;
+    }
+   
+  }
+  @media only screen and (min-width: 1400px) {
+    .card {
+        width: 1300px;
+    }
+    #ratings{
+        margin-left: 10em;
+    }
+   
+  }
+ 
+  
+main {
+    display: grid;
+    place-items: center;
+    
+    
+}
+
+.card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    padding: 20px;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border-radius: 6px;
+    
+}
+
+.comment-box {
+    padding: 5px
+}
+
+.comment-area textarea {
+    resize: none;
+    border: 1px solid #ad9f9f
+}
+
+.form-control:focus {
+    color: #495057;
+    background-color: #fff;
+    border-color: #ffffff;
+    outline: 0;
+    box-shadow: 0 0 0 1px rgb(255, 0, 0) !important
+}
+
+.send {
+    color: #fff;
+    background-color: #ff0000;
+    border-color: #ff0000
+}
+
+.send:hover {
+    color: #fff;
+    background-color: #f50202;
+    border-color: #f50202
+}
+
+#ratings {
+    width: 15em;
+    border:  1px solid;
+    border-color: #f50202;
+    margin-top: 10px;
+    background-color: #f50202;
+    color: #fff;
+    font-size: 1.7em;
+}
+
+#ratings1 {
+    width: 15em;
+    border:  1px solid;
+    border-color: #f50202;
+    margin-top: 10px;
+    background-color: #f50202;
+    color: #fff;
+    font-size: 1.7em;
+}
