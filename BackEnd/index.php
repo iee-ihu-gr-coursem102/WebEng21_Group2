@@ -6,10 +6,18 @@ if (!isset(getallheaders() ['x-api-key']) || getallheaders() ['x-api-key'] != "1
     exit;
 }
 */
+require_once "toolbox.php";
 
 $httpMethod = $_SERVER['REQUEST_METHOD'];
 
 $request_body = file_get_contents('php://input'); //php raw stream from http request body
+
+if (!isJson($request_body)) 
+{
+	  header('HTTP/1.1 415 Unsupported Media Type');
+	  exit;
+} 
+
 $json = json_decode($request_body, true);
 
 require_once "./Database/db_connection.php";
