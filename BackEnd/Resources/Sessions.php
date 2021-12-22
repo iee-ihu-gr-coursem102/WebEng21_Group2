@@ -2,7 +2,7 @@
 
 if ($httpMethod == "POST") {
 	if (isset($json["username"]) && isset($json["password"])) {
-	
+		$json["password"] = substr( hash('sha256', $json["password"]), 0, 15);
 		$sql = "SELECT * FROM users WHERE USERNAME = ? AND PASSWORD = ?";
 		if (!($stmt = $mysqli->prepare($sql))) {
 			print "Prepared failed:(" . $mysqli->errno . ") " . $mysqli->error;
