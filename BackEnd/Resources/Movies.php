@@ -6,6 +6,7 @@ if ($httpMethod == "GET")
     /*If there are no user inputs the current query returns all movies*/
     $search_input = $_GET["searchText"]; /*user input for search*/
     $genres_input = $_GET["category"]; /*user selection for genre*/
+    $topMovies_input = $_GET["bestMovies"]; /*user selection for genre*/
     $sql_query = "SELECT TITLE, POSTER_IMAGE, OVERVIEW, VOTE_AVERAGE, POPULARITY FROM movies ";
 
     $search_byTitle = !IsNullOrEmptyString($search_input);
@@ -26,6 +27,11 @@ if ($httpMethod == "GET")
             $sql_query += "AND ";
         }
         $sql_query += "GENRES LIKE '%" + htmlspecialchars($genres_input) + "%' ";
+    }
+
+    if (is_bool($topMovies_input) === true)
+    {
+        $sql_query += "ORDER BY POPULARITY DESC ";
     }
 
 	$result = mysqli_query($mysqli, $sql_query);
