@@ -16,21 +16,21 @@ if ($httpMethod == "GET")
     $search_byGenre = !IsNullOrEmptyString($genres_input);
     if ($search_byTitle || $search_byGenre)
     {
-        $sql_query."WHERE ";
+        $sql_query .= "WHERE ";
     }
 
     if ($search_byTitle)
     {
         foreach($search_array_input as $value)
         {            
-            $sql_query."TITLE LIKE '%".$value."%' AND ";
+            $sql_query .= "TITLE LIKE '%".$value."%' AND ";
         }
 
         $tmp = explode(' ', trim($sql_query));
         $last_query_word = end($tmp); /*get last_word of sql query*/
         if ($last_query_word == "AND")
         {
-            $sql_query = substr($sql_query, 0, strrpos($sql_query, " "));
+            $sql_query = preg_replace('/\W\w+\s*(\W*)$/', '$1', $sql_query); /*remove last word*/
         }
     }
     if ($search_byGenre)
@@ -39,14 +39,14 @@ if ($httpMethod == "GET")
         $last_query_word = end($tmp); /*get last_word of sql query*/
         if ($last_query_word != "WHERE")
         {
-            $sql_query."AND ";
+            $sql_query .= "AND ";
         }
-        $sql_query."GENRES LIKE '%".$genres_input."%' ";
+        $sql_query .= "GENRES LIKE '%".$genres_input."%' ";
     }
 
     if (is_bool($topMovies_input) === true)
     {
-        $sql_query."ORDER BY POPULARITY DESC ";
+        $sql_query .= "ORDER BY POPULARITY DESC ";
     }
 
 	$result = mysqli_query($mysqli, $sql_query);
@@ -70,7 +70,7 @@ if ($httpMethod == "GET")
 		}
 		echo json_encode($movies, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
 	}
-	header('HTTP/1.1 200 ΟΚ');
+	/*header('HTTP/1.1 200 ΟΚ');--not needed*/
 }
 
 function IsNullOrEmptyString($str)
