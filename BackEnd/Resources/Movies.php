@@ -4,9 +4,12 @@ if ($httpMethod == "GET")
 {
     /*Search Movies by multiple inputs such as Title, Genres*/
     /*If there are no user inputs the current query returns all movies*/
-    $search_input = $_GET["searchText"]; /*user input for search*/
-    $genres_input = $_GET["category"]; /*user selection for genre*/
-    $topMovies_input = $_GET["bestMovies"]; /*user selection for genre*/
+    $search_input = $_GET["searchText"]; /*user input for search --> string parameter*/
+    $genres_input = $_GET["category"]; /*user selection for genre --> string parameter*/
+    $topMovies_input = $_GET["bestMovies"]; /*user selection for bestMovies --> boolean parameter*/
+
+    $search_array_input = RemoveSpecialCharactersFromString($search_input);
+
     $sql_query = "SELECT TITLE, POSTER_IMAGE, OVERVIEW, VOTE_AVERAGE, POPULARITY FROM movies ";
 
     $search_byTitle = !IsNullOrEmptyString($search_input);
@@ -18,7 +21,14 @@ if ($httpMethod == "GET")
 
     if ($search_byTitle)
     {
-        $sql_query += "TITLE LIKE '%" + htmlspecialchars($search_input) + "%' ";
+        foreach($search_array_input as $value)
+        {
+            $sql_query += "TITLE LIKE '%" + htmlspecialchars($value) + "%' AND ";
+        }
+        if (array_pop(explode(' ', trim($sql_query))) /*get last_word of sql query*/ == "AND")
+        {
+            $sql_query = substr($sql_query, 0, strrpos($sql_query, " "));
+        }
     }
     if ($search_byGenre)
     {
@@ -61,5 +71,10 @@ if ($httpMethod == "GET")
 function IsNullOrEmptyString($str)
 {
     return (!isset($str) || trim($str) === '');
+}
+
+function RemoveSpecialCharactersFromString($string) 
+{
+    return preg_replace('/[^A-Za-z0-9]/', ' ', $string); // Removes all special chars.
 }
 ?>
