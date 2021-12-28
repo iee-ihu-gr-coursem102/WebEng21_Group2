@@ -6,10 +6,26 @@ if (!isset(getallheaders() ['x-api-key']) || getallheaders() ['x-api-key'] != "1
     exit;
 }
 */
+require_once "toolbox.php";
 
 $httpMethod = $_SERVER['REQUEST_METHOD'];
 
+
+$line = date('Y-m-d H:i:s') . "-" . $httpMethod . "-" ." - $_SERVER[REMOTE_ADDR]" . $_SERVER['REQUEST_URI'];
+file_put_contents('visitors.log', $line . PHP_EOL, FILE_APPEND);
+
+
 $request_body = file_get_contents('php://input'); //php raw stream from http request body
+
+if (!empty($request_body) && !isJson($request_body)) 
+{
+	if (!isJson($request_body)) {
+		header('HTTP/1.1 415 Unsupported Media Type');
+		exit;
+	}
+} 
+
+
 $json = json_decode($request_body, true);
 
 require_once "./Database/db_connection.php";
