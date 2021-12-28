@@ -27,20 +27,20 @@
           <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
             <div class="container px-4 px-lg-5">
                 <a class="navbar-brand" href="front_page.html"><img src="img/ducky.png" alt="" width="60" height="48"></a>
-                <div class="me-5">
-                  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation" onclick="changeClass()">
-                    <i class="fas fa-search" id="search_icon"></i>
-                  </button>
-                </div> 
+               <div class="me-5">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation" onclick="changeClass()">
+                  <i class="fas fa-search" id="search_icon"></i>
+                </button>
+               </div>
                   
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <!-- Searchbar-->
                     <div class="d-flex input-group w-75">
                       <button class="btn btn-danger dropdown-toggle" id = "combo_box" type="button" data-bs-toggle="dropdown" aria-expanded="false">All</button>
-                        <ul class="dropdown-menu" id ="drop">
-                          <li><a class="dropdown-item" id = "item_0" onclick="changeBox(30)">All</a></li>
-                          <li><hr class="dropdown-divider"></li>
-                        </ul>
+                      <ul class="dropdown-menu" id ="drop">
+                        <li><a class="dropdown-item" id = "item_0" onclick="changeBox(30)">All</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                      </ul>
                       <input type="text" id="myInput" class="form-control" placeholder="Search..." aria-label="Text input with dropdown button">
                       <div class="invisible">
                         <button type="button" id="SearchButton"></button>
@@ -48,40 +48,42 @@
                       
                     </div>
                   </div>
-                  <div class="dropstart position-relative">
-                    <div class="position-absolute top-0 start-50 translate-middle">
-                      <div class="me-5">
-                      <button type="button" class="btn btn-outline-danger" data-bs-toggle="dropdown" aria-expanded="true">Sign&nbsp;In</button>
-                     <div class="dropdown-menu">
-                      <form class="px-4 py-3">
-                        <div class="mb-3">
-                          <label for="exampleDropdownFormEmail1" class="form-label">Email address</label>
-                          <input type="email" class="form-control" id="exampleDropdownFormEmail1" placeholder="email@example.com">
-                        </div>
-                        <div class="mb-3">
-                          <label for="exampleDropdownFormPassword1" class="form-label">Password</label>
-                          <input type="password" class="form-control" id="exampleDropdownFormPassword1" placeholder="Password">
-                        </div>
-                        <div class="mb-3">
-                           <div class="form-check">
-                           <input type="checkbox" class="form-check-input" id="dropdownCheck">
-                           <label class="form-check-label" for="dropdownCheck">
-                           Remember me
-                          </label>
-                         </div>
-                         <button type="submit" class="btn btn-danger">Login</button>
-                       </form>
-                       <div class="dropdown-divider"></div>
-                       <a class="dropdown-item" href="register.html">New around here? Sign up</a>
-                       <a class="dropdown-item" href="#">Forgot password?</a>
-                     </div>
+                  
+                    <div class="dropstart position-relative">
+                      <div class="position-absolute top-0 start-50 translate-middle">
+                        <div class="me-5">
+                        <button type="button" class="btn btn-outline-danger" data-bs-toggle="dropdown" aria-expanded="true">Sign&nbsp;In</button>
+                       <div class="dropdown-menu">
+                        <form class="px-4 py-3">
+                          <div class="mb-3">
+                            <label for="exampleDropdownFormEmail1" class="form-label">Email address</label>
+                            <input type="email" class="form-control" id="exampleDropdownFormEmail1" placeholder="email@example.com">
+                          </div>
+                          <div class="mb-3">
+                            <label for="exampleDropdownFormPassword1" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="exampleDropdownFormPassword1" placeholder="Password">
+                          </div>
+                          <div class="mb-3">
+                             <div class="form-check">
+                             <input type="checkbox" class="form-check-input" id="dropdownCheck">
+                             <label class="form-check-label" for="dropdownCheck">
+                             Remember me
+                            </label>
+                           </div>
+                           <button type="submit" class="btn btn-danger">Login</button>
+                        </form>
+                         <div class="dropdown-divider"></div>
+                         <a class="dropdown-item" href="register.html">New around here? Sign up</a>
+                         <a class="dropdown-item" href="#">Forgot password?</a>
+                       </div>
+                      </div>
                     </div>
                   </div>
-                </div>
                     
               </div>
            </nav>
           </header>
+      
                         
                         
                      
