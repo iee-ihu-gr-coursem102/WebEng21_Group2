@@ -8,7 +8,7 @@ if ($httpMethod == "GET")
     $genres_input = $_GET["category"]; /*user selection for genre --> string parameter*/
     $topMovies_input = $_GET["bestMovies"]; /*user selection for bestMovies --> boolean parameter*/
 
-    $search_array_input = RemoveSpecialCharactersFromString($search_input);
+    $search_array_input = explode(' ', RemoveSpecialCharactersFromString($search_input));
 
     $sql_query = "SELECT TITLE, POSTER_IMAGE, OVERVIEW, VOTE_AVERAGE, POPULARITY FROM movies ";
 
@@ -16,32 +16,37 @@ if ($httpMethod == "GET")
     $search_byGenre = !IsNullOrEmptyString($genres_input);
     if ($search_byTitle || $search_byGenre)
     {
-        $sql_query += "WHERE ";
+        $sql_query."WHERE ";
     }
 
     if ($search_byTitle)
     {
         foreach($search_array_input as $value)
-        {
-            $sql_query += "TITLE LIKE '%" + htmlspecialchars($value) + "%' AND ";
+        {            
+            $sql_query."TITLE LIKE '%".$value."%' AND ";
         }
-        if (array_pop(explode(' ', trim($sql_query))) /*get last_word of sql query*/ == "AND")
+
+        $tmp = explode(' ', trim($sql_query));
+        $last_query_word = end($tmp); /*get last_word of sql query*/
+        if ($last_query_word == "AND")
         {
             $sql_query = substr($sql_query, 0, strrpos($sql_query, " "));
         }
     }
     if ($search_byGenre)
     {
-        if (array_pop(explode(' ', trim($sql_query))) /*get last_word of sql query*/ != "WHERE")
+        $tmp = explode(' ', trim($sql_query));
+        $last_query_word = end($tmp); /*get last_word of sql query*/
+        if ($last_query_word != "WHERE")
         {
-            $sql_query += "AND ";
+            $sql_query."AND ";
         }
-        $sql_query += "GENRES LIKE '%" + htmlspecialchars($genres_input) + "%' ";
+        $sql_query."GENRES LIKE '%".$genres_input."%' ";
     }
 
     if (is_bool($topMovies_input) === true)
     {
-        $sql_query += "ORDER BY POPULARITY DESC ";
+        $sql_query."ORDER BY POPULARITY DESC ";
     }
 
 	$result = mysqli_query($mysqli, $sql_query);
