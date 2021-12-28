@@ -17,11 +17,14 @@ file_put_contents('visitors.log', $line . PHP_EOL, FILE_APPEND);
 
 $request_body = file_get_contents('php://input'); //php raw stream from http request body
 
-if (!isJson($request_body)) 
+if (!empty($request_body) && !isJson($request_body)) 
 {
-	  header('HTTP/1.1 415 Unsupported Media Type');
-	  exit;
+	if (!isJson($request_body)) {
+		header('HTTP/1.1 415 Unsupported Media Type');
+		exit;
+	}
 } 
+
 
 $json = json_decode($request_body, true);
 
