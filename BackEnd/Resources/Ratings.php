@@ -77,38 +77,47 @@ if ($httpMethod == "POST")
 				exit;	
 			}	
 		}
+	} else {
+		header('HTTP/1.1 401 Anauthorized');
+		exit;
 	}
 } else if ($httpMethod == "GET") 
-{
-	$userid = $_SESSION["userid"];
-	$movieid = $json["movieid"];
+{   if (isset($_SESSION["userid"]) && isset($json["movieid"])) {
+		$userid = $_SESSION["userid"];
+		$movieid = $json["movieid"];
 	
-	$sql = "SELECT * FROM ratings WHERE IMDB_ID = ? AND USER_ID = ?";
+		$sql = "SELECT * FROM ratings WHERE IMDB_ID = ? AND USER_ID = ?";
 
-	if (!($stmt = $mysqli->prepare($sql))) {
-		print "Prepared failed:(" . $mysqli->errno . ") " . $mysqli->error;
-		header('HTTP/1.1 500 Internal Server Error');
-		exit;			
-	}
-	if (!$stmt->bind_param("si", $movieid, $userid)) {
-		print "Binding parameters failed:(" . $stmt->errno . ")" . $stmt->error;
-		header('HTTP/1.1 500 Internal Server Error');
-		exit;
-	}
-	if (!$stmt->execute()) {
-		print "Execute failed:(" . $stmt->errno . ")" . $stmt->error;
-		header('HTTP/1.1 500 Internal Server Error');
-		exit;
-	}
-	$result = $stmt->get_result();
-	$row = $result->fetch_assoc();
-	$data = array("voted_rating" => $row["VOTE_RATING"],
+		if (!($stmt = $mysqli->prepare($sql))) {
+			print "Prepared failed:(" . $mysqli->errno . ") " . $mysqli->error;
+			header('HTTP/1.1 500 Internal Server Error');
+			exit;			
+		}
+		if (!$stmt->bind_param("si", $movieid, $userid)) {
+			print "Binding parameters failed:(" . $stmt->errno . ")" . $stmt->error;
+			header('HTTP/1.1 500 Internal Server Error');
+			exit;
+		}
+		if (!$stmt->execute()) {
+			print "Execute failed:(" . $stmt->errno . ")" . $stmt->error;
+			header('HTTP/1.1 500 Internal Server Error');
+			exit;
+		}
+		$result = $stmt->get_result();
+		$row = $result->fetch_assoc();
+		$data = array("voted_rating" => $row["VOTE_RATING"],
 				 "movieid" => $movieid
 				 );
-	echo json_encode($data, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT);
+		echo json_encode($data, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT);
 
-	header('HTTP/1.1 200 OK');
-	exit;	
+		header('HTTP/1.1 200 OK');
+		exit;	
+	} 
+    else {
+		header('HTTP/1.1 401 Anauthorized');
+		exit;
+	}
+	
 	
 }
 
