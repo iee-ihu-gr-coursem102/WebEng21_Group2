@@ -7,20 +7,26 @@ if ($httpMethod == "POST") {
 		if (!($stmt = $mysqli->prepare($sql))) {
 			print "Prepared failed:(" . $mysqli->errno . ") " . $mysqli->error;
 		}
-		if (!$stmt->bind_param("ss", $json["username"], $json["password"])) {
+		if (!($stmt->bind_param("ss", $json["username"], $json["password"]))) {
 			print "Binding parameters failed:(" . $stmt->errno . ")" . $stmt->error;
 		}
-		if (!$stmt->execute()) {
+		if (!($stmt->execute())) {
 			print "Execute failed:(" . $stmt->errno . ")" . $stmt->error;
 		}
-        if ($stmt->get_result()->num_rows == 0) {
+		$result = $stmt->get_result();
+		
+        if ($result->num_rows == 0) {
+			//print $stmt->get_result()->num_rows ;
 			header('HTTP/1.1 401 Unauthorized');
+			exit;
 		}
 		else {
+			$row = $result->fetch_assoc();
 			$_SESSION["username"] = $json["username"];
+			$_SESSION["userid"] = $row["USER_ID"];//$row["USER_ID"]; 
 			header('HTTP/1.1 201 Created');
+			exit;
 		}
-		
 		
 	} else {
 		header('HTTP/1.1 400 Bad Request');

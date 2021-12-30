@@ -2,9 +2,9 @@
 
 if ($httpMethod == "POST") 
 { 	/*Request body requires userid, movieid, rating in JSON format*/
-	if (isset($json["userid"]) && isset($json["movieid"]) && isset($json["rating"])) {
+	if (isset($_SESSION["userid"]) && isset($json["movieid"]) && isset($json["rating"])) {
 		
-		
+		$userId = $_SESSION["userid"];
 		/* We add rating in the specific movie*/
 		$sql = "INSERT INTO ratings(IMDB_ID, USER_ID, VOTE_RATING) VALUES (?, ?, ?)";
 		
@@ -12,12 +12,19 @@ if ($httpMethod == "POST")
 			print "Prepared failed:(" . $mysqli->errno . ") " . $mysqli->error;
 			exit;
 		}
-		if (!$stmt->bind_param("sid", $json["movieid"], $json["userid"], $json["rating"])) {
+		if (!$stmt->bind_param("sid", $json["movieid"], $userId, $json["rating"])) {
 			print "Binding parameters failed:(" . $stmt->errno . ")" . $stmt->error;
 			exit;
 		}
 		if (!$stmt->execute()) {
-			print "Execute failed:(" . $stmt->errno . ")" . $stmt->error;
+			if ($stmt->errno == 1062) {
+				//print "ok";
+				$sql = "UPDATE ratings SET VOTE_RATING =" . $json["rating"] . " WHERE  IMDB_ID LIKE '" . $json["movieid"] . "' AND USER_ID = " . $userId;
+				//print $sql;
+				$mysqli->query($sql);
+				header('HTTP/1.1 204 No content');
+				exit;	
+			}
 			exit;
 		}
 		
@@ -73,8 +80,34 @@ if ($httpMethod == "POST")
 	}
 } else if ($httpMethod == "GET") 
 {
+	$userid = $_SESSION["userid"];
+	$movieid = $json["movieid"];
 	
-	header('HTTP/1.1 501 Not Implemented');
+	$sql = "SELECT * FROM ratings WHERE IMDB_ID = ? AND USER_ID = ?";
+
+	if (!($stmt = $mysqli->prepare($sql))) {
+		print "Prepared failed:(" . $mysqli->errno . ") " . $mysqli->error;
+		header('HTTP/1.1 500 Internal Server Error');
+		exit;			
+	}
+	if (!$stmt->bind_param("si", $movieid, $userid)) {
+		print "Binding parameters failed:(" . $stmt->errno . ")" . $stmt->error;
+		header('HTTP/1.1 500 Internal Server Error');
+		exit;
+	}
+	if (!$stmt->execute()) {
+		print "Execute failed:(" . $stmt->errno . ")" . $stmt->error;
+		header('HTTP/1.1 500 Internal Server Error');
+		exit;
+	}
+	$result = $stmt->get_result();
+	$row = $result->fetch_assoc();
+	$data = array("voted_rating" => $row["VOTE_RATING"],
+				 "movieid" => $movieid
+				 );
+	echo json_encode($data, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT);
+
+	header('HTTP/1.1 200 OK');
 	exit;	
 	
 }
