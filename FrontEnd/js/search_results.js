@@ -8,50 +8,26 @@ document.getElementById("search_result").textContent += keySearch;
 const searchResult = document.getElementById('searchResults');
 let movie = [];
 
-
+if(keyCategory==='all'){
+    keyCategory = '';
+}
 
 
   
 const loadMovies = async () => {
     try {
-        if(keyCategory==='all'){
-            const res = await fetch('https://users.it.teithe.gr/~ait062021/index.php/v1/Movies');
-        movie = await res.json();
-        const searchString = keySearch.toLowerCase();
-        //console.log(searchString);
-        const filteredMovies = movie.filter((movie) => {
-            return (
-                movie.title.toLowerCase().includes(searchString)||
-                movie.overview.toLowerCase().includes(searchString)
-            );
-        });
-        for (let i = 0; i < filteredMovies.length ; i++) {
-            const title = filteredMovies[i].title;
-            const titleS = title.toString();
-            sessionStorage.setItem(titleS, JSON.stringify(filteredMovies[i]));
-        }
-        displayMovies(filteredMovies);
-        
-        }
-        else{
-            const res = await fetch('https://users.it.teithe.gr/~ait062021/index.php/v1/Movies?category='+ keyCategory);
-            movie = await res.json();
+       
             const searchString = keySearch.toLowerCase();
-            
-            const filteredMovies = movie.filter((movie) => {
-                return (
-                    movie.title.toLowerCase().includes(searchString)||
-                    movie.overview.toLowerCase().includes(searchString)
-                );
-            });
-            for (let i = 0; i < filteredMovies.length ; i++) {
-                const title = filteredMovies[i].title;
+            const res = await fetch("https://users.it.teithe.gr/~ait062021/index.php/v1/Movies?searchText="+searchString+"&category="+keyCategory+"&bestMovies=true");
+            movie = await res.json();
+
+            for (let i = 0; i < movie.length ; i++) {
+                const title = movie[i].title;
                 const titleS = title.toString();
-                sessionStorage.setItem(titleS, JSON.stringify(filteredMovies[i]));
+                sessionStorage.setItem(titleS, JSON.stringify(movie[i]));
             }
-            displayMovies(filteredMovies);
-            
-        }
+            displayMovies(movie);
+        
         
         } catch (err) {
         console.error(err);

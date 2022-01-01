@@ -49,36 +49,55 @@
                       </div>
                     </div>
                     
-                      <div class="dropstart position-relative">
-                        <div class="position-absolute top-0 start-50 translate-middle">
-                          <div class="me-5">
-                          <button type="button" class="btn btn-outline-danger" data-bs-toggle="dropdown" aria-expanded="true">Sign&nbsp;In</button>
-                         <div class="dropdown-menu">
-                          <form class="px-4 py-3">
-                            <div class="mb-3">
-                              <label for="exampleDropdownFormEmail1" class="form-label">Email address</label>
-                              <input type="text" class="form-control" id="exampleDropdownFormEmail1" placeholder="username">
-                            </div>
-                            <div class="mb-3">
-                              <label for="exampleDropdownFormPassword1" class="form-label">Password</label>
-                              <input type="password" class="form-control" id="exampleDropdownFormPassword1" placeholder="Password">
-                            </div>
-                            <div class="mb-3">
-                               <div class="form-check">
-                               <input type="checkbox" class="form-check-input" id="dropdownCheck">
-                               <label class="form-check-label" for="dropdownCheck">
-                               Remember me
-                              </label>
-                             </div>
-                             <button type="submit" class="btn btn-danger" id="buttonId" onclick= "performLogin()">Login</button>
-                          </form>
-                           <div class="dropdown-divider"></div>
-                           <a class="dropdown-item" href="register.html">New around here? Sign up</a>
-                           <a class="dropdown-item" href="#">Forgot password?</a>
-                         </div>
-                        </div>
+                    <div class="dropstart position-relative" id="signIn">
+                      <div class="position-absolute top-0 start-50 translate-middle">
+                        <div class="me-5">
+                        <button type="button" class="btn btn-outline-danger" data-bs-toggle="dropdown" aria-expanded="true">Sign&nbsp;In</button>
+                       <div class="dropdown-menu">
+                        <form class="px-4 py-3">
+                          <div class="mb-3">
+                            <label for="exampleDropdownFormEmail1" class="form-label">Username</label>
+                            <input type="text" class="form-control" id="exampleDropdownFormEmail1" placeholder="Username">
+                          </div>
+                          <div class="mb-3">
+                            <label for="exampleDropdownFormPassword1" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="exampleDropdownFormPassword1" placeholder="Password">
+                          </div>
+                          <div class="mb-3">
+                             <div class="form-check">
+                             <input type="checkbox" class="form-check-input" id="dropdownCheck">
+                             <label class="form-check-label" for="dropdownCheck">
+                             Remember me
+                            </label>
+                           </div>
+                           <button type="submit" class="btn btn-danger" id="buttonId" onclick= "performLogin()">Login</button>
+                        </form>
+                         <div class="dropdown-divider"></div>
+                         <a class="dropdown-item" href="register.html">New around here? Sign up</a>
+                         <a class="dropdown-item" href="#">Forgot password?</a>
+                       </div>
                       </div>
                     </div>
+                    <script>
+                      const connected = sessionStorage.getItem('connected');
+                      if(connected==='true'){
+                              document.getElementById("signIn").classList.remove('dropstart');
+                              var elemnt = document.getElementById("signIn");
+                              elemnt.innerHTML = `<div class="btn-group position-relative">
+                                <div class="position-absolute top-0 start-0 translate-middle">
+                                          <button type="button" class="btn dropdown-toggle " data-bs-toggle="dropdown" aria-expanded="false">
+                                            <img class="" width="50" height="50" src="img/duck.png" data-holder-rendered="true">
+                                          </button>
+                                          <ul class="dropdown-menu">
+                                            <li><a class="dropdown-item" href="#">Logout</a></li>
+                                          </ul>
+                                        </div>
+                                  </div>`
+                              
+                          }
+                         
+                    </script>
+                  </div>
                       
                 </div>
              </nav>

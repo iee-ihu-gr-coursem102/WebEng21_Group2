@@ -8,3 +8,7 @@ function changeClass() {
         search_icon.className ='fas fa-search';
     }
 } ;
+
+if(sessionStorage.length===0){
+    sessionStorage.setItem('connected','false');
+}
