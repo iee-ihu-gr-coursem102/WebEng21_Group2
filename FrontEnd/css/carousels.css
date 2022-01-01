@@ -52,14 +52,14 @@
 }
 
 /* Caption text */
-.text {
-  color: #000;
+.badge {
+  color: white;
   font-size: 18px;
   font-weight: bold;
   padding: 8px 12px;
   position: absolute;
   bottom: 8px;
-  width: 100%;
+  width: 50.4%;
   text-align: center;
 }
 

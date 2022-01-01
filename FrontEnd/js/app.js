@@ -14,8 +14,9 @@ const connectToAPIs = () => {
   
     //grab img tags and captions tags
     const imgs = document.querySelectorAll('div.mySlides .img');
-    const captions = document.querySelectorAll('div.mySlides .text');
-  
+    const captions = document.querySelectorAll('div.mySlides .badge');
+    const anchors = document.querySelectorAll('div.mySlides .movie');
+    const array = [];
     
    
   
@@ -36,8 +37,15 @@ const connectToAPIs = () => {
   
       //replace caption text
       captions[index].innerHTML = capText;
-      
+      sessionStorage.setItem(capText, JSON.stringify(data[random]))
+      array.push("movie_page.html#" +data[random].title)
   
+    });
+
+    anchors.forEach((anchor,index) =>{
+      const anchorLink = array[index];
+      anchor.setAttribute('href', anchorLink)
+
     });
   
   }
