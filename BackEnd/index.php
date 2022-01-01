@@ -1,5 +1,7 @@
 <?php
 session_start();
+
+
 /*
 if (!isset(getallheaders() ['x-api-key']) || getallheaders() ['x-api-key'] != "1234") {
     header('HTTP/1.1 403 Forbidden');
@@ -38,6 +40,13 @@ if (!isset($_SERVER['PATH_INFO'])) {
 
 $request = explode('/', trim($_SERVER['PATH_INFO'], '/'));
 $request = array("dbversion" => $request[0], "resource" => $request[1]);
+
+
+if ($httpMethod == "OPTIONS") {
+	header('Access-Control-Allow-Origin: *');
+	header('Access-Control-Allow-Methods: GET,DELETE,POST');
+	exit;
+}
 
 if ($request["dbversion"]) {
 	header('Access-Control-Allow-Origin: *');
