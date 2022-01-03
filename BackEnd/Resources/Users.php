@@ -8,6 +8,8 @@ if ( $httpMethod == "POST") {
 		$stmt = $mysqli->prepare($sql);
 		$stmt->bind_param("sss", $json["username"], $json["password"], $json["email"]);
 
+		validateEmail($json["email"]);
+		
 		if($stmt->execute()) {
 			$stmt->close();
 			header('HTTP/1.1 201 Created');
@@ -24,6 +26,13 @@ if ( $httpMethod == "POST") {
 
 
 
+function validateEmail($email) {
+	if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+		$emailErr = "Invalid email format";
+		header("HTTP/1.1 400 Bad Request");
+		exit;
+	}
+}
 
 
 
