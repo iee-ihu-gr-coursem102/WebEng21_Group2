@@ -10,7 +10,7 @@ if ($httpMethod == "GET")
 
     $search_array_input = explode(' ', RemoveSpecialCharactersFromString($search_input));
 
-    $sql_query = "SELECT DISTINCT TITLE, POSTER_IMAGE, OVERVIEW, VOTE_AVERAGE, POPULARITY FROM movies ";
+    $sql_query = "SELECT DISTINCT TITLE, POSTER_IMAGE, OVERVIEW, GENRES, VOTE_AVERAGE, POPULARITY FROM movies ";
 
     $search_byTitle = !IsNullOrEmptyString($search_input);
     $search_byGenre = !IsNullOrEmptyString($genres_input);
@@ -93,6 +93,7 @@ if ($httpMethod == "GET")
                     "title" => $row['TITLE'], 
                     "posterImage" => "https://image.tmdb.org/t/p/w500" . $row['POSTER_IMAGE'], 
                     "overview" => $row['OVERVIEW'],
+                    "genres" => $row['GENRES'],
                     "voteAverage" => $row['VOTE_AVERAGE'], 
                     "popularity" => $row['POPULARITY']
                     );
