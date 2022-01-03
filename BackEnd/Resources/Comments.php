@@ -2,12 +2,15 @@
 
 if ($httpMethod == "POST") 
 {
-	if (isset($json["userId"]) && isset($json["movieId"]) && isset($json["commentText"])) 
+	/*Request body requires userid, movieid, comment in JSON format*/
+	if (isset($_SESSION["userid"]) && isset($json["movieid"]) && isset($json["commentText"])) 
 	{
+		$userId = $_SESSION["userid"];
+		
 		//Insert in DB
 		$sql = "INSERT INTO reviews (USER_ID, IMDB_ID , REVIEW_TEXT, DATE_OF_REVIEW) VALUES(?, ?, ?, ?)";
 		$stmt = $mysqli->prepare($sql);
-		$stmt->bind_param("sss", $json["userId"], $json["movieId"], $json["commentText"], date("Y-m-d H:i:s") /* get instant Datetime */);
+		$stmt->bind_param("sss", $userId, $json["movieId"], $json["commentText"], date("Y-m-d H:i:s") /* get instant Datetime */);
 
 		if($stmt->execute()) 
 		{
@@ -29,8 +32,10 @@ if ($httpMethod == "POST")
 } 
 else if ($httpMethod == "GET") 
 {
-	$sql_query = "SELECT * FROM reviews ";
-  
+	if(IsNullOrEmptyString($_GET["movieId"]))
+	{ return; }
+	$sql_query = "SELECT * FROM reviews WHERE IMDB_ID = '".$_GET["movieId"]."'";
+
 	$result = mysqli_query($mysqli, $sql_query);
 
 	if($result) 
@@ -51,7 +56,7 @@ else if ($httpMethod == "GET")
             }
 		}
 		echo json_encode($comments, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
-		header('HTTP/1.1 200 ΟΚ');
+		/*header('HTTP/1.1 200 ΟΚ'); -- not needed*/
 	}
 	else
 	{
@@ -64,5 +69,11 @@ else if ($httpMethod == "DELETE")
 }
 else {
 	header('HTTP/1.1 405 Method Not Allowed');
+}
+
+
+function IsNullOrEmptyString($str)
+{
+    return (!isset($str) || trim($str) === '');
 }
 ?>
