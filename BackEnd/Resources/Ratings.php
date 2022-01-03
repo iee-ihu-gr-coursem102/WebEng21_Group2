@@ -18,15 +18,16 @@ if ($httpMethod == "POST")
 		}
 		if (!$stmt->execute()) {
 			if ($stmt->errno == 1062) {
-				//print "ok";
+				
 				$sql = "UPDATE ratings SET VOTE_RATING =" . $json["rating"] . " WHERE  IMDB_ID LIKE '" . $json["movieid"] . "' AND USER_ID = " . $userId;
-				//print $sql;
+				
 				$mysqli->query($sql);
 				header('HTTP/1.1 204 No content');
-				exit;	
+				//exit;	
+			} 	//exit;
+		} else { 
+			header('HTTP/1.1 201 Created');
 			}
-			exit;
-		}
 		
 		if ($mysqli->affected_rows == 1) {
 			
@@ -53,7 +54,7 @@ if ($httpMethod == "POST")
 			$stmt->close();
 			
 			/*We calculate the new average and update movie data*/
-			$total_average = ($row["VOTE_AVERAGE"] + $json["rating"]) / 2 ;
+			$total_average = ($row["VOTE_AVERAGE"] * $row["VOTE_COUNT"] + $json["rating"]) / ($row["VOTE_COUNT"] + 1); 
 			//print "Total average =>" . $total_average;
 			if ($matchedMovies == 1) {
 				$sql = "UPDATE movies SET VOTE_AVERAGE = ?, VOTE_COUNT = VOTE_COUNT + 1 WHERE movies.IMDB_ID = ?";
@@ -73,7 +74,7 @@ if ($httpMethod == "POST")
 					header('HTTP/1.1 500 Internal Server Error');
 					exit;
 				}
-				header('HTTP/1.1 201 Created');
+				
 				exit;	
 			}	
 		}

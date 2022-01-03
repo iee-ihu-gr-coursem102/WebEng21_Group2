@@ -1,5 +1,11 @@
 <?php
-session_start();
+if (session_id() == '') {
+   ini_set('session.cookie_samesite', 'None');
+   ini_set('session.cookie_secure', 1);
+   ini_set( 'session.cookie_httponly', 1 );
+   session_set_cookie_params(1200);
+    session_start();
+}
 
 
 /*
@@ -43,13 +49,17 @@ $request = array("dbversion" => $request[0], "resource" => $request[1]);
 
 
 if ($httpMethod == "OPTIONS") {
-	header('Access-Control-Allow-Origin: *');
+	header('Access-Control-Allow-Origin:http://www.teithe.gr');
 	header('Access-Control-Allow-Methods: GET,DELETE,POST');
 	exit;
 }
-
 if ($request["dbversion"]) {
-	header('Access-Control-Allow-Origin: *');
+    if($_SERVER["HTTP_ORIGIN"] == "http://127.0.0.1:5503") { 
+		header('Access-Control-Allow-Origin: http://127.0.0.1:5503'); } 
+    else { 
+         header('Access-Control-Allow-Origin: https://www.teithe.gr');
+    }
+	
     if ($request["resource"] == "Movies") {
         require_once "./Resources/" . $request['resource'] . ".php";
     }
