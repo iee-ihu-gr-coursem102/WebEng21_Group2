@@ -6,32 +6,51 @@ if ($httpMethod == "GET")
     /*If there are no user inputs the current query returns all movies*/
     $search_input = $_GET["searchText"]; /*user input for search --> string parameter*/
     $genres_input = $_GET["category"]; /*user selection for genre --> string parameter*/
-    $topMovies_input = $_GET["bestMovies"]; /*user selection for bestMovies --> boolean parameter*/
+    $topMovies_input = $_GET["bestMovies"]; /*user selection for bestMovies (popularity index) --> boolean parameter*/
 
     $search_array_input = explode(' ', RemoveSpecialCharactersFromString($search_input));
 
-    $sql_query = "SELECT TITLE, POSTER_IMAGE, OVERVIEW, VOTE_AVERAGE, POPULARITY FROM movies ";
+    $sql_query = "SELECT DISTINCT TITLE, POSTER_IMAGE, OVERVIEW, VOTE_AVERAGE, POPULARITY FROM movies ";
 
     $search_byTitle = !IsNullOrEmptyString($search_input);
     $search_byGenre = !IsNullOrEmptyString($genres_input);
     if ($search_byTitle || $search_byGenre)
     {
+        if ($search_byTitle)
+        {
+            $sql_query .= "LEFT JOIN roles ON roles.IMDB_ID = movies.IMDB_ID LEFT JOIN cast_members ON cast_members.IMDB_NAME_ID = roles.IMDB_NAME_ID ";
+        }
         $sql_query .= "WHERE ";
     }
 
     if ($search_byTitle)
     {
+        $sql_query_byTitle = "";
+        $sql_query_byActor = "";
         foreach($search_array_input as $value)
         {            
-            $sql_query .= "TITLE LIKE '%".$value."%' AND ";
+            $sql_query_byTitle .= " (TITLE LIKE '%".$value."%' AND ";
+            $sql_query_byActor .= " (NAME LIKE '%".$value."%' AND ";
         }
 
-        $tmp = explode(' ', trim($sql_query));
+        $tmp = explode(' ', trim($sql_query_byTitle));
         $last_query_word = end($tmp); /*get last_word of sql query*/
         if ($last_query_word == "AND")
         {
-            $sql_query = preg_replace('/\W\w+\s*(\W*)$/', '$1', $sql_query); /*remove last word*/
+            $sql_query_byTitle = preg_replace('/\W\w+\s*(\W*)$/', '$1', $sql_query_byTitle); /*remove last word*/
+            $sql_query_byTitle .= ") OR ";
         }
+
+        $tmp = explode(' ', trim($sql_query_byActor));
+        $last_query_word = end($tmp); /*get last_word of sql query*/
+        if ($last_query_word == "AND")
+        {
+            $sql_query_byActor = preg_replace('/\W\w+\s*(\W*)$/', '$1', $sql_query_byActor); /*remove last word*/
+            $sql_query_byActor .= ") OR ";
+        }
+
+        $sql_query .= $sql_query_byTitle;
+        $sql_query .= $sql_query_byActor;
     }
     if ($search_byGenre)
     {
@@ -80,6 +99,7 @@ function IsNullOrEmptyString($str)
 
 function RemoveSpecialCharactersFromString($string) 
 {
-    return preg_replace('/[^A-Za-z0-9]/', ' ', $string); // Removes all special chars.
+    $out = preg_replace('/[^A-Za-z0-9]/', ' ', $string);
+    return $out; // Removes all special chars.
 }
 ?>
