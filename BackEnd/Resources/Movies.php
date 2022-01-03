@@ -27,10 +27,12 @@ if ($httpMethod == "GET")
     {
         $sql_query_byTitle = "";
         $sql_query_byActor = "";
+        $sql_query_byCharacter = "";
         foreach($search_array_input as $value)
         {            
-            $sql_query_byTitle .= " (TITLE LIKE '%".$value."%' AND ";
-            $sql_query_byActor .= " (NAME LIKE '%".$value."%' AND ";
+            $sql_query_byTitle .= " (movies.TITLE LIKE '%".$value."%' AND ";
+            $sql_query_byActor .= " (cast_members.NAME LIKE '%".$value."%' AND ";
+            $sql_query_byCharacter .= " (roles.CHARACTER LIKE '%".$value."%' AND ";
         }
 
         $tmp = explode(' ', trim($sql_query_byTitle));
@@ -49,8 +51,17 @@ if ($httpMethod == "GET")
             $sql_query_byActor .= ") OR ";
         }
 
+        $tmp = explode(' ', trim($sql_query_byCharacter));
+        $last_query_word = end($tmp); /*get last_word of sql query*/
+        if ($last_query_word == "AND")
+        {
+            $sql_query_byCharacter = preg_replace('/\W\w+\s*(\W*)$/', '$1', $sql_query_byCharacter); /*remove last word*/
+            $sql_query_byCharacter .= ") ";
+        }
+
         $sql_query .= $sql_query_byTitle;
         $sql_query .= $sql_query_byActor;
+        $sql_query .= $sql_query_byCharacter;
     }
     if ($search_byGenre)
     {
