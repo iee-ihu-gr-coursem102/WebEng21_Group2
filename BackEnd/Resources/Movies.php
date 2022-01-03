@@ -10,7 +10,7 @@ if ($httpMethod == "GET")
 
     $search_array_input = explode(' ', RemoveSpecialCharactersFromString($search_input));
 
-    $sql_query = "SELECT DISTINCT TITLE, POSTER_IMAGE, OVERVIEW, GENRES, VOTE_AVERAGE, POPULARITY FROM movies ";
+    $sql_query = "SELECT DISTINCT movies.IMDB_ID, TITLE, POSTER_IMAGE, OVERVIEW, GENRES, VOTE_AVERAGE, POPULARITY FROM movies ";
 
     $search_byTitle = !IsNullOrEmptyString($search_input);
     $search_byGenre = !IsNullOrEmptyString($genres_input);
@@ -78,7 +78,7 @@ if ($httpMethod == "GET")
     {
         $sql_query .= "ORDER BY POPULARITY DESC ";
     }
-
+    
 	$result = mysqli_query($mysqli, $sql_query);
 
 	if($result) 
@@ -89,14 +89,16 @@ if ($httpMethod == "GET")
 			if ($row != null)
 			{ 
                 /*array_push($movies, $row);*/
-                $movies[] = array(
+                $movies[] = array
+                (
+                    "id" => $row['IMDB_ID'], 
                     "title" => $row['TITLE'], 
                     "posterImage" => "https://image.tmdb.org/t/p/w500" . $row['POSTER_IMAGE'], 
                     "overview" => $row['OVERVIEW'],
                     "genres" => $row['GENRES'],
                     "voteAverage" => $row['VOTE_AVERAGE'], 
                     "popularity" => $row['POPULARITY']
-                    );
+                );
             }
 		}
 		echo json_encode($movies, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
