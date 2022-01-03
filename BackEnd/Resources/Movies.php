@@ -25,7 +25,7 @@ if ($httpMethod == "GET")
 
     if ($search_byTitle)
     {
-        $sql_query_byTitle = "";
+        $sql_query_byTitle = " (";
         $sql_query_byActor = "";
         $sql_query_byCharacter = "";
         foreach($search_array_input as $value)
@@ -56,7 +56,7 @@ if ($httpMethod == "GET")
         if ($last_query_word == "AND")
         {
             $sql_query_byCharacter = preg_replace('/\W\w+\s*(\W*)$/', '$1', $sql_query_byCharacter); /*remove last word*/
-            $sql_query_byCharacter .= ") ";
+            $sql_query_byCharacter .= ")) ";
         }
 
         $sql_query .= $sql_query_byTitle;
