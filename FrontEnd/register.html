@@ -53,8 +53,6 @@
                         
                         
                      
-                    
-        
 
         <!--Register Form--> 
         <main>
@@ -64,28 +62,28 @@
               <div class="row d-flex justify-content-center align-items-center h-100">
                 <div class="col-12 col-md-9 col-lg-7 col-xl-6">
                   <div class="card" style="border-radius: 15px;">
-                    <div class="card-body p-5">
+                    <div class="card-body p-5" id="users">
                       <h2 class="text-uppercase text-center mb-5">Create an account</h2>
-        
+                
+                      
                       <form>
-        
                         <div class="form-outline mb-4">
-                          <input type="text" id="form3Example1cg" class="form-control form-control-lg" />
-                          <label class="form-label" for="form3Example1cg">Your Name</label>
+                          <input type="text" id="form3Example1cg" class="form-control form-control-lg" tabindex="1"/>
+                          <label class="form-label" for="form3Example1cg">Username</label>
                         </div>
         
                         <div class="form-outline mb-4">
-                          <input type="email" id="form3Example3cg" class="form-control form-control-lg" />
+                          <input type="email" id="form3Example3cg" class="form-control form-control-lg" tabindex="2"/>
                           <label class="form-label" for="form3Example3cg">Your Email</label>
                         </div>
         
                         <div class="form-outline mb-4">
-                          <input type="password" id="form3Example4cg" class="form-control form-control-lg" />
+                          <input type="password" id="form3Example4cg" class="form-control form-control-lg" tabindex="3"/>
                           <label class="form-label" for="form3Example4cg">Password</label>
                         </div>
         
                         <div class="form-outline mb-4">
-                          <input type="password" id="form3Example4cdg" class="form-control form-control-lg" />
+                          <input type="password" id="form3Example4cdg" class="form-control form-control-lg" tabindex="4"/>
                           <label class="form-label" for="form3Example4cdg">Repeat your password</label>
                         </div>
         
@@ -95,17 +93,24 @@
                             type="checkbox"
                             value=""
                             id="form2Example3cg"
+                            required
+                            tabindex="5"
                           />
                           <label class="form-check-label" for="form2Example3g">
-                            I agree all statements in <a href="#!" class="text-body"><u>Terms of service</u></a>
+                            I agree all statements in <a href="#!" class="text-body" ><u>Terms of service</u></a>
                           </label>
                         </div>
         
                         <div class="d-flex justify-content-center">
-                          <button type="button" class="btn btn-danger btn-block btn-lg">Register</button>
-                        </div>                                             
+                          <button type="submit" class="btn btn-danger btn-block btn-lg" id="buttonId" onclick= "registration()" tabindex="6">Create Account</button>
+                        </div>   
+                              <div><br></div>
+                        <div class="d-flex justify-content-center">
+                          <button type="reset" onclick="clearFunc()" id="res" class="btn-block btn-sm">Clear Form</button> 
+                        </div>
+                       
                       </form>
-        
+                    
                     </div>
                   </div>
                 </div>
@@ -239,7 +244,8 @@
             <!-- Copyright -->
           </footer>
           <!-- Footer -->
-        
+          
+          <script src="js/register.js"></script>
           
           <script src="js/search.js"></script>
         
