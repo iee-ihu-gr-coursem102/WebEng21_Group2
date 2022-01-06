@@ -34,7 +34,7 @@ Members / Students / Developers:
 
 For more info, have a look at our WIKI
 
-Technologies Used:  HTML, PHP, JavaScript, MySQL.
+Technologies Used:  HTML, PHP, CSS, JavaScript, MySQL.
 
 Deployment:
 
