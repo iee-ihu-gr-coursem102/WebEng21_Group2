@@ -18,7 +18,7 @@
 
     
           <!-- Custom styles for carousel -->
-          <link href="carousel.css" rel="stylesheet">
+         
         
           <script src="js/nav.js"></script>
           <script src="js/combo_box.js"></script>
@@ -32,7 +32,7 @@
           <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
             <div class="container px-4 px-lg-5">
                 <a class="navbar-brand" href="front_page.html"><img src="img/ducky.png" alt="" width="60" height="48"></a>
-               <div class="me-auto">
+               <div class="me-5">
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation" onclick="changeClass()">
                   <i class="fas fa-search" id="search_icon"></i>
                 </button>
@@ -54,36 +54,55 @@
                     </div>
                   </div>
                   
-                    <div class="dropstart position-relative">
-                      <div class="position-absolute top-0 start-50 translate-middle">
-                        <div class="me-5">
-                        <button type="button" class="btn btn-outline-danger" data-bs-toggle="dropdown" aria-expanded="true">Sign&nbsp;In</button>
-                       <div class="dropdown-menu">
-                        <form class="px-4 py-3">
-                          <div class="mb-3">
-                            <label for="exampleDropdownFormEmail1" class="form-label">Email address</label>
-                            <input type="email" class="form-control" id="exampleDropdownFormEmail1" placeholder="email@example.com">
-                          </div>
-                          <div class="mb-3">
-                            <label for="exampleDropdownFormPassword1" class="form-label">Password</label>
-                            <input type="password" class="form-control" id="exampleDropdownFormPassword1" placeholder="Password">
-                          </div>
-                          <div class="mb-3">
-                             <div class="form-check">
-                             <input type="checkbox" class="form-check-input" id="dropdownCheck">
-                             <label class="form-check-label" for="dropdownCheck">
-                             Remember me
-                            </label>
-                           </div>
-                           <button type="submit" class="btn btn-danger">Login</button>
-                        </form>
-                         <div class="dropdown-divider"></div>
-                         <a class="dropdown-item" href="register.html">New around here? Sign up</a>
-                         <a class="dropdown-item" href="#">Forgot password?</a>
-                       </div>
-                      </div>
+                  <div class="dropstart position-relative" id="signIn">
+                    <div class="position-absolute top-0 start-50 translate-middle">
+                      <div class="me-5">
+                      <button type="button" class="btn btn-outline-danger" data-bs-toggle="dropdown" aria-expanded="true">Sign&nbsp;In</button>
+                     <div class="dropdown-menu">
+                      <form class="px-4 py-3">
+                        <div class="mb-3">
+                          <label for="exampleDropdownFormEmail1" class="form-label">Username</label>
+                          <input type="text" class="form-control" id="exampleDropdownFormEmail1" placeholder="Username">
+                        </div>
+                        <div class="mb-3">
+                          <label for="exampleDropdownFormPassword1" class="form-label">Password</label>
+                          <input type="password" class="form-control" id="exampleDropdownFormPassword1" placeholder="Password">
+                        </div>
+                        <div class="mb-3">
+                           <div class="form-check">
+                           <input type="checkbox" class="form-check-input" id="dropdownCheck">
+                           <label class="form-check-label" for="dropdownCheck">
+                           Remember me
+                          </label>
+                         </div>
+                         <button type="submit" class="btn btn-danger" id="buttonId" onclick= "performLogin()">Login</button>
+                      </form>
+                       <div class="dropdown-divider"></div>
+                       <a class="dropdown-item" href="register.html">New around here? Sign up</a>
+                       <a class="dropdown-item" href="#">Forgot password?</a>
+                     </div>
                     </div>
                   </div>
+                  <script>
+                    const connected = sessionStorage.getItem('connected');
+                    if(connected==='true'){
+                            document.getElementById("signIn").classList.remove('dropstart');
+                            var elemnt = document.getElementById("signIn");
+                            elemnt.innerHTML = `<div class="btn-group position-relative">
+                              <div class="position-absolute top-0 start-0 translate-middle">
+                                        <button type="button" id="buttonOut" class="btn dropdown-toggle " data-bs-toggle="dropdown" aria-expanded="false">
+                                          <img class="" width="50" height="50" src="img/duck.png" data-holder-rendered="true">
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                          <li><a class="dropdown-item" onclick="performLogout()" href="#">Logout</a></li>
+                                        </ul>
+                                      </div>
+                                </div>`
+                            
+                        }
+                       
+                  </script>
+                </div>
                     
               </div>
            </nav>
@@ -181,7 +200,22 @@
                         <div class="row row-cols-auto rounded" id = "ratings">
                           <div class="col" style="margin-top: 0.3em;"><p>Leave a rating: </p></div>
                           <div class="col" style="margin-top: 0.3em;"><p>☆</p></div>
-                          <div class="col" style="margin-top: 0.4em;"><input id = "userRating" class="form-control" style="text-align:center;" type="text" maxlength="2" size="1"></div>
+                          <div class="col" style="margin-top: 0.4em;">
+                            <select id="userRating" name="rating">
+                              <option value=""></option>
+                              <option value="0">0</option>
+                              <option value="1">1</option>
+                              <option value="2">2</option>
+                              <option value="3">3</option>
+                              <option value="4">4</option>
+                              <option value="5">5</option>
+                              <option value="6">6</option>
+                              <option value="7">7</option>
+                              <option value="8">8</option>
+                              <option value="9">9</option>
+                              <option value="10">10</option>
+                              
+                            </select></div>
                           <div class="col" style="margin-top: 0.3em;"><p>/10</p></div>
                         </div>
                         <br>
@@ -192,7 +226,7 @@
                                     <div class="pull-left"> <button class="btn btn-secondary">Cancel</button> </div>
                                 </div>
                                 <div class="col-2 col-md-2 col-lg-2 col-sm-3">
-                                    <div class="pull-right"> <button id="sendButton" class="btn btn-danger send">Send <i class="fa fa-long-arrow-right ml-1"></i></button> </div>
+                                    <div class="pull-right"> <button id="sendButton" class="btn btn-danger send" onclick="userInput()">Send <i class="fa fa-long-arrow-right ml-1"></i></button> </div>
                                 </div>
                             </div>
                         </div>
@@ -330,9 +364,9 @@
           <!-- Footer -->
         
           <script src="js/movie_page.js"></script>
-            
+          <script src="js/login.js"></script>
           <script src="js/search.js"></script>
-        
+
           <!-- Bootstrap JavaScript-->
         
          

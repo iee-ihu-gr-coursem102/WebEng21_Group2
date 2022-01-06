@@ -13,18 +13,20 @@ const password =document.getElementById("exampleDropdownFormPassword1").value;
 
 var xhttp = new XMLHttpRequest();
 xhttp.open("POST", "https://users.it.teithe.gr/~ait062021/index.php/v1/Sessions", false);
-xhttp.onreadystatechange = function() {
-  if (xhttp.readyState == 4 && xhttp.status == 201){
-	  
+//xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+xhttp.onload = function() {
+  if (this.status == 201){
+	  alert("ok");
     sessionStorage.setItem('connected','true');
     sessionStorage.setItem('username',username);
-    window.open('front_page.html');
+    location.reload();
+  
   }
   else if (xhttp.readyState == 4 && xhttp.status == 401)
     window.alert("Error Password or Username");
 }
 
-//xhttp.withCredentials = true
+//xhttp.withCredentials = true;
 xhttp.send('{"username" : "' + username + '", "password" : "' + password + '"}');
 
 
