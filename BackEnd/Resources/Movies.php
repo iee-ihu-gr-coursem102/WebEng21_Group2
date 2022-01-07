@@ -4,9 +4,23 @@ if ($httpMethod == "GET")
 {
     /*Search Movies by multiple inputs such as Title, Genres*/
     /*If there are no user inputs the current query returns all movies*/
-    $search_input = $_GET["searchText"]; /*user input for search --> string parameter*/
-    $genres_input = $_GET["category"]; /*user selection for genre --> string parameter*/
-    $topMovies_input = $_GET["bestMovies"]; /*user selection for bestMovies (popularity index) --> boolean parameter*/
+    $search_input = ""; /*user input for search --> string parameter*/
+    if (isset($_GET["searchText"]))
+    { 
+        $search_input = $_GET["searchText"]; 
+    }
+
+    $genres_input = "";
+    if (isset($_GET["category"])) /*user selection for genre --> string parameter*/
+    { 
+        $genres_input = $_GET["category"]; 
+    }
+
+    $topMovies_input = false;
+    if (isset($_GET["bestMovies"]) && checkBool($_GET["bestMovies"]) == true) /*user selection for bestMovies (popularity index) --> boolean parameter*/
+    {
+        $topMovies_input = $_GET["bestMovies"]; 
+    } 
 
     $search_array_input = explode(' ', RemoveSpecialCharactersFromString($search_input));
 
@@ -74,11 +88,12 @@ if ($httpMethod == "GET")
         $sql_query .= "GENRES LIKE '%".$genres_input."%' ";
     }
 
-    if (is_bool($topMovies_input) === true)
+    if ($topMovies_input == true)
     {
         $sql_query .= "ORDER BY POPULARITY DESC ";
     }
-    
+
+    print($sql_query);
 	$result = mysqli_query($mysqli, $sql_query);
 
 	if($result) 
@@ -115,5 +130,11 @@ function RemoveSpecialCharactersFromString($string)
 {
     $out = preg_replace('/[^A-Za-z0-9]/', ' ', $string);
     return $out; // Removes all special chars.
+}
+
+function checkBool($string)
+{
+    $string = strtolower($string);
+    return (in_array($string, array("true", "false", "1", "0"), true));
 }
 ?>
