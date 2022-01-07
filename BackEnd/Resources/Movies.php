@@ -93,7 +93,7 @@ if ($httpMethod == "GET")
         $sql_query .= "ORDER BY POPULARITY DESC ";
     }
 
-    print($sql_query);
+    /*print($sql_query);*/
 	$result = mysqli_query($mysqli, $sql_query);
 
 	if($result) 
