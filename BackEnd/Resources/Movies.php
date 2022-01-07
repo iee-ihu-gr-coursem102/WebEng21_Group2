@@ -111,7 +111,7 @@ if ($httpMethod == "GET")
                     "posterImage" => "https://image.tmdb.org/t/p/w500" . $row['POSTER_IMAGE'], 
                     "overview" => $row['OVERVIEW'],
                     "genres" => $row['GENRES'],
-                    "voteAverage" => $row['VOTE_AVERAGE'], 
+                    "voteAverage" => round((float)$row['VOTE_AVERAGE'], 1), 
                     "popularity" => $row['POPULARITY']
                 );
             }
