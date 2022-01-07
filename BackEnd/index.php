@@ -54,10 +54,16 @@ if ($httpMethod == "OPTIONS") {
 	exit;
 }
 if ($request["dbversion"]) {
-    if($_SERVER["HTTP_ORIGIN"] == "http://127.0.0.1:5503") { 
+    if (isset($_SERVER["HTTP_ORIGIN"]))
+    {
+        if($_SERVER["HTTP_ORIGIN"] == "http://127.0.0.1:5503") { 
 		header('Access-Control-Allow-Origin: http://127.0.0.1:5503'); } 
-    else { 
-         header('Access-Control-Allow-Origin: https://www.teithe.gr');
+        else { 
+                header('Access-Control-Allow-Origin: https://www.teithe.gr');
+        }
+    }
+    else{
+        header('Access-Control-Allow-Origin: *');
     }
 	
     if ($request["resource"] == "Movies") {
