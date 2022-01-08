@@ -51,36 +51,37 @@ function registration()	{
 		{
 			alert ('Password max length is 12');
 		}
-		else
-    {
-        
-      if (document.getElementById("form3Example4cg").value == document.getElementById("form3Example4cdg").value) {
+		else if (document.getElementById("form3Example4cg").value == document.getElementById("form3Example4cdg").value) {
         var users = new Object();
         users.name = document.getElementById("form3Example1cg").value;
         users.email = document.getElementById("form3Example3cg").value;
         users.password = document.getElementById("form3Example4cg").value;
 
         var postUser = new XMLHttpRequest(); // new HttpRequest instance to send user details
-		postUser.open('POST', "https://users.it.teithe.gr/~ait062021/index.php/v1/Users", true); //Use the HTTP POST method to send data to server
-        
+		postUser.open('POST', "https://users.it.teithe.gr/~ait062021/index.php/v1/Users", false); //Use the HTTP POST method to send data to server
+                postUser.onload=function(){
+			if(postUser.status == 201){	
+				//alert('Thank You for register');
+				document.getElementById("papaki").click();
+			}else if(postUser.status != 201) {
+				alert(postUser.status);
+					}
+		}
+                    // postUser.withCredentials = true;
 		postUser.send('{"username" : "' + users.name + '", "email" : "' + users.email + '", "password" : "' + users.password + '"}');
 	
 		
-		postUser.onreadystatechange=function(){
-			if(postUser.readyState == 4 && postUser.status == 201){	
-				alert('Thank You for register');
-				window.location.href="front_page.html";
-			}else if(postUser.status != 201 && postUser.readyState == 4) {
-				alert(postUser.status);
-					}
-		} 
+		 
 	
     }
+    
+        
+   
     else {
         alert("Password column and Confirm Password column doesn't match!")
     }
 
-}
+
 				                            
         
 //Clear Registration Form
