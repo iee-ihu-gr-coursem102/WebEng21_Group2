@@ -34,7 +34,8 @@ else if ($httpMethod == "GET")
 {
 	if(IsNullOrEmptyString($_GET["movieId"]))
 	{ return; }
-	$sql_query = "SELECT * FROM reviews WHERE IMDB_ID = '".$_GET["movieId"]."'";
+	
+	$sql_query = "SELECT reviews.*, users.USERNAME FROM reviews INNER JOIN users ON reviews.USER_ID = users.USER_ID WHERE IMDB_ID = '".$_GET["movieId"]."'";
 
 	$result = mysqli_query($mysqli, $sql_query);
 
@@ -50,6 +51,7 @@ else if ($httpMethod == "GET")
 				(
                     "movieId" => $row['IMDB_ID'], 
                     "userId" => $row['USER_ID'], 
+					"username" => $row['USERNAME'],
                     "commentText" => $row['REVIEW_TEXT'], 
 					"commentDate" => $row['DATE_OF_REVIEW'], 
 				);
