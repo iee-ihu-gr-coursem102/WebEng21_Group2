@@ -62,7 +62,8 @@ function registration()	{
                 postUser.onload=function(){
 			if(postUser.status == 201){	
 				//alert('Thank You for register');
-				document.getElementById("papaki").click();
+				performLogin();
+				
 			}else if(postUser.status != 201) {
 				alert(postUser.status);
 					}
@@ -94,3 +95,31 @@ function registration()	{
 		document.getElementById("form3Example4cg").value="";
 		document.getElementById("form3Example4cdg").value="";
 	}
+
+	function performLogin(){
+
+
+
+		const username = sessionStorage.getItem('username');
+		const password = sessionStorage.getItem('password');
+		
+		
+		var xhttp = new XMLHttpRequest();
+		xhttp.open("POST", "https://users.it.teithe.gr/~ait062021/index.php/v1/Sessions", false);
+		//xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+		xhttp.onload = function() {
+		  if (this.status == 201){
+			  alert("ok");
+			sessionStorage.setItem('connected','true');
+			sessionStorage.removeItem('password')
+				document.getElementById("papaki").click();
+					  }
+		  else if (xhttp.readyState == 4 && xhttp.status == 401)
+			window.alert("Error Password or Username");
+		}
+		
+		xhttp.withCredentials = true;
+		xhttp.send('{"username" : "' + username + '", "password" : "' + password + '"}');
+		
+		
+		} 
