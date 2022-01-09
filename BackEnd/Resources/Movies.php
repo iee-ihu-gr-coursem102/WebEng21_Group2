@@ -103,12 +103,13 @@ if ($httpMethod == "GET")
         {
 			if ($row != null)
 			{ 
-                $imageUrl = "https://image.tmdb.org/t/p/w500" . $row['POSTER_IMAGE'];
-                $file_headers = @get_headers($imageUrl);
-                if(!$file_headers || $file_headers[0] == 'HTTP/1.1 404 Not Found') /*Check if image url exists else skip*/
-                {
+                /* Tested--Works -- a bit slow method -- for now comment*/
+                /*$imageUrl = "https://image.tmdb.org/t/p/w500" . $row['POSTER_IMAGE'];*/
+                /*$file_headers = @get_headers($imageUrl);*/
+                /*if(!$file_headers || $file_headers[0] == 'HTTP/1.1 404 Not Found')*/ /*Check if image url exists else skip*/
+                /*{
                     continue;
-                }
+                }*/
 
                 /*array_push($movies, $row);*/
                 $movies[] = array
