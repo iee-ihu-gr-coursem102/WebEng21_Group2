@@ -43,7 +43,7 @@ async function ActionMovies () {
     var result = await axios.get("https://users.it.teithe.gr/~ait062021/index.php/v1/Movies?category=Action");
     result = result.data;
     
-    result.sort(() =>(Math.random()>0.5)?1:-1).slice(0,10).map (function (movie) {
+    result.sort(() =>(Math.random()>0.5)?1:-1).slice(0,20).map (function (movie) {
        actionCarousel.insertAdjacentHTML(
            "beforeend",
            `<img class="img-slider-img" src="${movie.posterImage}" />`        
@@ -60,7 +60,7 @@ async function dramaMovies () {
     var result = await axios.get("https://users.it.teithe.gr/~ait062021/index.php/v1/Movies?category=Drama");
     result = result.data;
     
-    result.sort(() =>(Math.random()>0.5)?1:-1).slice(0,10).map (function (movie) {
+    result.sort(() =>(Math.random()>0.5)?1:-1).slice(0,20).map (function (movie) {
        dramaCarousel.insertAdjacentHTML(
            "beforeend",
            `<img class="img-slider-img" src="${movie.posterImage}" />`        
@@ -77,7 +77,7 @@ async function HorrorMovies () {
     var result = await axios.get("https://users.it.teithe.gr/~ait062021/index.php/v1/Movies?category=Horror");
     result = result.data;
     
-    result.sort(() =>(Math.random()>0.5)?1:-1).slice(0,10).map (function (movie) {
+    result.sort(() =>(Math.random()>0.5)?1:-1).slice(0,20).map (function (movie) {
         horrorCarousel.insertAdjacentHTML(
            "beforeend",
            `<img class="img-slider-img" src="${movie.posterImage}" />`        
