@@ -10,7 +10,7 @@ if ($httpMethod == "POST")
 		//Insert in DB
 		$sql = "INSERT INTO reviews (USER_ID, IMDB_ID , REVIEW_TEXT, DATE_OF_REVIEW) VALUES(?, ?, ?, ?)";
 		$stmt = $mysqli->prepare($sql);
-		$stmt->bind_param("sss", $userId, $json["movieId"], $json["commentText"], date("Y-m-d H:i:s") /* get instant Datetime */);
+		$stmt->bind_param("ssss", $userId, $json["movieId"], $json["commentText"], date("Y-m-d H:i:s") /* get instant Datetime */);
 
 		if($stmt->execute()) 
 		{
