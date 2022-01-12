@@ -3,7 +3,7 @@
 if ($httpMethod == "POST") 
 {
 	/*Request body requires userid, movieid, comment in JSON format*/
-	if (isset($_SESSION["userid"]) && isset($json["movieid"]) && isset($json["commentText"])) 
+	if (isset($_SESSION["userid"]) && isset($json["movieId"]) && isset($json["commentText"])) 
 	{
 		$userId = $_SESSION["userid"]; /*get user id from active session*/
 		
