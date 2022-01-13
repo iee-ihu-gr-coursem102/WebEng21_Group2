@@ -3,14 +3,14 @@
 if ($httpMethod == "POST") 
 {
 	/*Request body requires userid, movieid, comment in JSON format*/
-	if (isset($_SESSION["userid"]) && isset($json["movieid"]) && isset($json["commentText"])) 
+	if (isset($_SESSION["userid"]) && isset($json["movieId"]) && isset($json["commentText"])) 
 	{
-		$userId = $_SESSION["userid"];
+		$userId = $_SESSION["userid"]; /*get user id from active session*/
 		
 		//Insert in DB
 		$sql = "INSERT INTO reviews (USER_ID, IMDB_ID , REVIEW_TEXT, DATE_OF_REVIEW) VALUES(?, ?, ?, ?)";
 		$stmt = $mysqli->prepare($sql);
-		$stmt->bind_param("sss", $userId, $json["movieId"], $json["commentText"], date("Y-m-d H:i:s") /* get instant Datetime */);
+		$stmt->bind_param("ssss", $userId, $json["movieId"], $json["commentText"], date("Y-m-d H:i:s") /* get instant Datetime */);
 
 		if($stmt->execute()) 
 		{
@@ -32,10 +32,17 @@ if ($httpMethod == "POST")
 } 
 else if ($httpMethod == "GET") 
 {
-	if(IsNullOrEmptyString($_GET["movieId"]))
-	{ return; }
+	$movieid_input = ""; /*user input for search --> string parameter*/
+    if (isset($_GET["movieId"]))
+    { 
+        $movieid_input = trim($_GET["movieId"]); 
+    }
+  
+    $search_byMovieId = !IsNullOrEmptyString($movieid_input);
+	if(!$search_byMovieId)
+	{ exit; }
 	
-	$sql_query = "SELECT reviews.*, users.USERNAME FROM reviews INNER JOIN users ON reviews.USER_ID = users.USER_ID WHERE IMDB_ID = '".$_GET["movieId"]."'";
+	$sql_query = "SELECT reviews.*, users.USERNAME FROM reviews INNER JOIN users ON reviews.USER_ID = users.USER_ID WHERE IMDB_ID = '".$movieid_input."'";
 
 	$result = mysqli_query($mysqli, $sql_query);
 
