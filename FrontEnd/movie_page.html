@@ -150,83 +150,51 @@
           <div class="container" style="margin-top: 3em;">
             <div class="be-comment-block">
               <h1 class="comments-title">Reviews (2)</h1>
-              <div class="be-comment">
-                <div class="be-img-comment">	
-                  <a href="blog-detail-2.html">
-                    <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="" class="be-ava-comment">
-                  </a>
-                </div>
-                <div class="be-comment-content">
-                  
-                    <span class="be-comment-name">
-                      Stelios
-                      </span>
-                    <span class="be-comment-time">
-                      May 27, 2015 at 3:14am
-                    </span>
-            
-                  <p class="be-comment-text">
-                    Best Movie Ever!
-                  </p>
-                </div>
-              </div>
-              <div class="be-comment">
-                <div class="be-img-comment">	
-                  <a href="blog-detail-2.html">
-                    <img src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="" class="be-ava-comment">
-                  </a>
-                </div>
-                <div class="be-comment-content">
-                  <span class="be-comment-name">
-                    Nikos
-                  </span>
-                  <span class="be-comment-time">
-                    May 27, 2015 at 3:14am
-                  </span>
-                  <p class="be-comment-text">
-                    Overrated!
-                  </p>
-                </div>
-              </div>
+            <div id="postedComments">
+
+            </div>
               
               </div>
             </div>
+            <div class="row row-cols-auto rounded" id = "ratings">
+              <div class="col-4"></div>
+              <div class="col" style="margin-top: 0.3em;"><p>Leave a rating: </p></div>
+              <div class="col" style="margin-top: 0.3em;"><p>☆</p></div>
+              <div class="col" style="margin-top: 0.4em;">
+                <select id="userRating" name="rating">
+                  <option value=""></option>
+                  <option value="0">0</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                  <option value="7">7</option>
+                  <option value="8">8</option>
+                  <option value="9">9</option>
+                  <option value="10">10</option>
+                  
+                </select></div>
+              <div class="col-3" style="margin-top: 0.3em; margin-left: 1.2em;"><p>/10</p></div>
+              <div class="pull-right"> <button  style="margin-top: 0.9em;" class="btn send" onclick="userInput()">Send </button> </div>
+            </div>
+            <br>
           <div class="card">
             <div class="row">
                 <div class="col-2"> <img src="img/ducky.png" width="70" class="rounded-circle mt-2"> </div>
                 <div class="col-10">
                     <div class="comment-box ml-2">
                         <h4>Add a comment</h4>
-                        <div class="row row-cols-auto rounded" id = "ratings">
-                          <div class="col" style="margin-top: 0.3em;"><p>Leave a rating: </p></div>
-                          <div class="col" style="margin-top: 0.3em;"><p>☆</p></div>
-                          <div class="col" style="margin-top: 0.4em;">
-                            <select id="userRating" name="rating">
-                              <option value=""></option>
-                              <option value="0">0</option>
-                              <option value="1">1</option>
-                              <option value="2">2</option>
-                              <option value="3">3</option>
-                              <option value="4">4</option>
-                              <option value="5">5</option>
-                              <option value="6">6</option>
-                              <option value="7">7</option>
-                              <option value="8">8</option>
-                              <option value="9">9</option>
-                              <option value="10">10</option>
-                              
-                            </select></div>
-                          <div class="col" style="margin-top: 0.3em;"><p>/10</p></div>
-                        </div>
-                        <br>
-                        <div class="comment-area"> <textarea class="form-control" placeholder="what is your view?" rows="4"></textarea> </div>
+                       
+                        <div class="comment-area"> <textarea id="userComment" class="form-control" placeholder="what is your view?" rows="4"></textarea> </div>
                         <div class="comment-btns mt-2">
                             <div class="row">
                                 <div class="col-10 col-md-10 col-lg-10 col-sm-9">
                                     <div class="pull-left"> <button class="btn btn-secondary">Cancel</button> </div>
                                 </div>
                                 <div class="col-2 col-md-2 col-lg-2 col-sm-3">
-                                    <div class="pull-right"> <button id="sendButton" class="btn btn-danger send" onclick="userInput()">Send <i class="fa fa-long-arrow-right ml-1"></i></button> </div>
+                                    <div class="pull-right"> <button class="btn btn-danger" onclick="userInput1()">Send <i class="fa fa-long-arrow-right ml-1"></i></button> </div>
                                 </div>
                             </div>
                         </div>

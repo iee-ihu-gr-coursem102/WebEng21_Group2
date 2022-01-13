@@ -6,7 +6,7 @@
         width: 700px;
     }
     #ratings{
-        margin-left: 5em;
+        width: 700px;
     }
     
 }
@@ -15,7 +15,7 @@
         width: 950px;
     }
     #ratings{
-        margin-left: 10em;
+        width: 950px;
     }
    
   }
@@ -24,7 +24,7 @@
         width: 1120px;
     }
     #ratings{
-        margin-left: 10em;
+        width: 1120px;
     }
    
   }
@@ -33,7 +33,7 @@
         width: 1300px;
     }
     #ratings{
-        margin-left: 10em;
+        width: 1300px;
     }
    
   }
@@ -77,19 +77,13 @@ main {
 }
 
 .send {
-    color: #fff;
-    background-color: #ff0000;
-    border-color: #ff0000
-}
+    color: #ff0000;
+    background-color: #fff;
 
-.send:hover {
-    color: #fff;
-    background-color: #f50202;
-    border-color: #f50202
 }
 
 #ratings {
-    width: 15em;
+   
     border:  1px solid;
     border-color: #f50202;
     margin-top: 10px;
