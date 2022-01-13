@@ -46,8 +46,16 @@ async function ActionMovies () {
     result.sort(() =>(Math.random()>0.5)?1:-1).slice(0,20).map (function (movie) {
        actionCarousel.insertAdjacentHTML(
            "beforeend",
-           `<img class="img-slider-img" src="${movie.posterImage}" />`        
+           `<a href="#" data-id="${movie.id}" data="${JSON.stringify(movie)}" data-name="${movie.title}"><img class="img-slider-img" src="${movie.posterImage}" /></a>`        
        )
+
+        document.querySelectorAll(`a[data-id=${movie.id}]`)[0].addEventListener("click", (event)=>{
+            event.preventDefault();
+            event.stopPropagation();
+            sessionStorage.setItem(movie.title, JSON.stringify(movie))
+            document.location.href=`movie_page.html#${movie.title}`
+        })
+
     })
     
     scrollPerClick = 400;
@@ -63,8 +71,16 @@ async function dramaMovies () {
     result.sort(() =>(Math.random()>0.5)?1:-1).slice(0,20).map (function (movie) {
        dramaCarousel.insertAdjacentHTML(
            "beforeend",
-           `<img class="img-slider-img" src="${movie.posterImage}" />`        
+           `<a href="#" data-id="${movie.id}" data="${JSON.stringify(movie)}" data-name="${movie.title}"><img class="img-slider-img" src="${movie.posterImage}" /></a>`       
        )
+
+       document.querySelectorAll(`a[data-id=${movie.id}]`)[0].addEventListener("click", (event)=>{
+        event.preventDefault();
+        event.stopPropagation();
+        sessionStorage.setItem(movie.title, JSON.stringify(movie))
+        document.location.href=`movie_page.html#${movie.title}`
+    })
+          
     })
     
     scrollPerClick = 400;
@@ -80,8 +96,16 @@ async function HorrorMovies () {
     result.sort(() =>(Math.random()>0.5)?1:-1).slice(0,20).map (function (movie) {
         horrorCarousel.insertAdjacentHTML(
            "beforeend",
-           `<img class="img-slider-img" src="${movie.posterImage}" />`        
+           `<a href="#" data-id="${movie.id}" data="${JSON.stringify(movie)}" data-name="${movie.title}"><img class="img-slider-img" src="${movie.posterImage}" /></a>`        
        )
+
+       document.querySelectorAll(`a[data-id=${movie.id}]`)[0].addEventListener("click", (event)=>{
+        event.preventDefault();
+        event.stopPropagation();
+        sessionStorage.setItem(movie.title, JSON.stringify(movie))
+        document.location.href=`movie_page.html#${movie.title}`
+    })
+
     })
     
     scrollPerClick = 400;
@@ -97,9 +121,19 @@ async function RomanceMovies () {
     result.sort(() =>(Math.random()>0.5)?1:-1).slice(0,20).map (function (movie) {
         romanceCarousel.insertAdjacentHTML(
            "beforeend",
-           `<img class="img-slider-img" src="${movie.posterImage}" />`        
+           `<a href="#" data-id="${movie.id}" data="${JSON.stringify(movie)}" data-name="${movie.title}"><img class="img-slider-img" src="${movie.posterImage}" /></a>`        
        )
+
+       document.querySelectorAll(`a[data-id=${movie.id}]`)[0].addEventListener("click", (event)=>{
+        event.preventDefault();
+        event.stopPropagation();
+        sessionStorage.setItem(movie.title, JSON.stringify(movie))
+        document.location.href=`movie_page.html#${movie.title}`
     })
+
+    })
+
+    
     
     scrollPerClick = 400;
     
@@ -114,11 +148,20 @@ async function ComedyMovies () {
     result.sort(() =>(Math.random()>0.5)?1:-1).slice(0,20).map (function (movie) {
         comedyCarousel.insertAdjacentHTML(
            "beforeend",
-           `<img class="img-slider-img" src="${movie.posterImage}" />`        
+           `<a href="#" data-id="${movie.id}" data="${JSON.stringify(movie)}" data-name="${movie.title}"><img class="img-slider-img" src="${movie.posterImage}" /></a>`        
        )
+
+       document.querySelectorAll(`a[data-id=${movie.id}]`)[0].addEventListener("click", (event)=>{
+        event.preventDefault();
+        event.stopPropagation();
+        sessionStorage.setItem(movie.title, JSON.stringify(movie))
+        document.location.href=`movie_page.html#${movie.title}`
+    })
+    
     })
     
     scrollPerClick = 400;
     
 }
+
 
