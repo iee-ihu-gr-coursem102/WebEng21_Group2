@@ -2,7 +2,7 @@
 
 // connect to API and fetch data
 const connectToAPIs = () => {
-    fetch('https://users.it.teithe.gr/~ait062021/index.php/v1/Movies')
+    fetch('https://users.it.teithe.gr/~ait062021/index.php/v1/Movies?bestMovies=true')
     .then(response => response.json())
     .then(data => {
       getData(data);
@@ -24,7 +24,7 @@ const connectToAPIs = () => {
     imgs.forEach( (img,index) => {
   
       //get random num between 0-19
-      const random = Math.floor( Math.random() * 3943);
+      const random = Math.floor(index);
   
       //get src and title of img from data obj with random num
       const imgSrc = data[random].posterImage;

@@ -2,7 +2,14 @@ body{
   background-color: #2a3035;
 
 }
-
+#fail{
+  color: white;
+  position: relative; /* or absolute */
+  top: 50%;
+  left: 20%;
+  margin-bottom: 5em;
+  background-color: #e72806;
+}
 main>h2>p{
   color: white;
 }
@@ -22,7 +29,13 @@ main>h2>p{
 #main_movies{
   color: white;
 }
+#spinner{
+  position: relative;
+  margin-bottom: 10em;
+  margin-left: 40em;
 
+
+}
 .btn:focus {
   outline: none;
   box-shadow: none;

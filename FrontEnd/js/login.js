@@ -16,14 +16,14 @@ xhttp.open("POST", "https://users.it.teithe.gr/~ait062021/index.php/v1/Sessions"
 //xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 xhttp.onload = function() {
   if (this.status == 201){
-	  alert("ok");
+	  alert("Καλως ήρθατε");
     sessionStorage.setItem('connected','true');
     sessionStorage.setItem('username',username);
     location.reload();
   
   }
   else if (xhttp.readyState == 4 && xhttp.status == 401)
-    window.alert("Error Password or Username");
+    window.alert("Σφάλμα σύνδεσης");
 }
 
 //xhttp.withCredentials = true;
