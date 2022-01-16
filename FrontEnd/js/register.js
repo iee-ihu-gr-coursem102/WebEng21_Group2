@@ -61,7 +61,9 @@ function registration()	{
 		postUser.open('POST', "https://users.it.teithe.gr/~ait062021/index.php/v1/Users", false); //Use the HTTP POST method to send data to server
                 postUser.onload=function(){
 			if(postUser.status == 201){	
-				//alert('Thank You for register');
+				alert('Thank You for register');
+				sessionStorage.setItem('password',users.password);
+				sessionStorage.setItem('username',users.name);
 				performLogin();
 				
 			}else if(postUser.status != 201) {

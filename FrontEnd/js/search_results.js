@@ -3,7 +3,7 @@ windowHash = windowHash.split('#');
 keySearch = windowHash[2];
 keySearch = keySearch.split('%20').join(' ');
 keyCategory = windowHash[1].toLowerCase();
-document.getElementById("search_result").textContent += keySearch;
+document.getElementById("search_result").textContent += '"'+keySearch+'"'+' Category: "'+keyCategory+'"';
 
 const searchResult = document.getElementById('searchResults');
 let movie = [];
