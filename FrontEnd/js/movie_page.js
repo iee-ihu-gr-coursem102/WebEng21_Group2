@@ -90,10 +90,10 @@ function userInput() {
     xhttp.open("POST", "https://users.it.teithe.gr/~ait062021/index.php/v1/Ratings", false);
     xhttp.onload = function() {
     if (xhttp.status == 201){
-        alert("ok");
+        alert("Καταχωρήθηκε επιτυχώς η βαθμολογία σας");
         location.reload();
     }else if (xhttp.readyState == 4 && xhttp.status == 401)
-        window.alert("Error Password or Username");
+        window.alert("Δεν καταχωρήθηκε η βαθμολογία σας");
     
     
     }
@@ -111,10 +111,10 @@ function userInput() {
     xhttp.open("POST", "https://users.it.teithe.gr/~ait062021/index.php/v1/Comments", false);
     xhttp.onload = function() {
     if (xhttp.status == 201){
-        alert("ok");
+        alert("Καταχωρήθηκε επιτυχώς το σχόλιο σας");
         location.reload();
     }else if (xhttp.readyState == 4 && xhttp.status == 400)
-        window.alert("Error");
+        window.alert("Δεν καταχωρήθηκε το σχόλιο σας");
     
     
     }

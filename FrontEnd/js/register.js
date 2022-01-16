@@ -13,43 +13,43 @@ function registration()	{
 		const filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
 
 		if(name=='') {
-      alert('Please enter your name');
+      alert('Παρακάλω εισάγετε όνομα');
     }
 		else if(!letters.test(name))
 		{
-			alert('Name field required only alphabet characters');
+			alert('Χρησιμοποιήστε μόνο αλφαβητικούς χαρακτήρες');
 		}
 		else if(email=='')
 		{
-			alert('Please enter your user email id');
+			alert('Παρακαλώ εισάγεται email');
 		}
 		else if (!filter.test(email))
 		{
-			alert('Invalid email');
+			alert('Λάθος email');
 		}
 		else if(pwd=='')
 		{
-			alert('Please enter Password');
+			alert('Παρακαλώ εισάγεται κωδικό πρόσβασης');
 		}
 		else if(cpwd=='')
 		{
-			alert('Enter Confirm Password');
+			alert('Παρακαλώ επιβεβαιώστε τον κωδικό πρόσβασης');
 		}
 		else if(!pwd_expression.test(pwd))
 		{
-			alert ('Upper case, Lower case, Special character and Numeric letter are required in Password filed');
+			alert ('Κεφαλαία, μικρά, ειδικοί χαρακτήρες  και γράμματα απαιτούνται στο πεδίο του κωδικού');
 		}
 		else if(pwd != cpwd)
 		{
-			alert ('Password not Matched');
+			alert ('Οι κωδικοί δεν ταιριάζουν');
 		}
 		else if(document.getElementById("form3Example4cdg").value.length < 6)
 		{
-			alert ('Password minimum length is 6');
+			alert ('Μικρότερο μήκος κωδικού τα 6 ψηφία');
 		}
 		else if(document.getElementById("form3Example4cdg").value.length > 12)
 		{
-			alert ('Password max length is 12');
+			alert ('Μεγαλύτερο μήκος κωδικού τα 12 ψηφία');
 		}
 		else if (document.getElementById("form3Example4cg").value == document.getElementById("form3Example4cdg").value) {
         var users = new Object();
@@ -61,7 +61,7 @@ function registration()	{
 		postUser.open('POST', "https://users.it.teithe.gr/~ait062021/index.php/v1/Users", false); //Use the HTTP POST method to send data to server
                 postUser.onload=function(){
 			if(postUser.status == 201){	
-				alert('Thank You for register');
+				alert('Ευχαριστούμε για την εγγραφή σας');
 				sessionStorage.setItem('password',users.password);
 				sessionStorage.setItem('username',users.name);
 				performLogin();
@@ -81,7 +81,7 @@ function registration()	{
         
    
     else {
-        alert("Password column and Confirm Password column doesn't match!")
+        alert("Κωδικος πρόσβασης με την επιβεβαίωση δεν ταιρίαζουν!")
     }
 
 

@@ -15,7 +15,7 @@ xhttp.onload = function() {
     location.reload();
   }
   else {
-    window.alert("Error");
+    window.alert("Σφάλμα αποσύνδεσης");
   }
 }
 
